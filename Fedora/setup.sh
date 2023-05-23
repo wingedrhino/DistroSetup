@@ -64,6 +64,7 @@ sudo dnf install \
   fuse-exfat \
   gvfs-fuse \
   android-tools \
+  rpi-imager \
   git-all \
   nginx \
   bind \
