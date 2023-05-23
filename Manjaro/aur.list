@@ -5,6 +5,8 @@ binfmt-qemu-static-all-arch
 plasma5-applets-plasma-pstate
 radium
 godot
+mediawriter
+unetbootin
 multibootusb
 usbtop
 fritzing
