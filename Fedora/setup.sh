@@ -13,8 +13,7 @@ if ! grep -qe "keepcache=1" "/etc/dnf/dnf.conf"; then
   sudo su -c "echo 'keepcache=1' >> /etc/dnf/dnf.conf"
 fi
 
-echo "Enable PostgreSQL 14 Repos"
-sudo dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/F-35-x86_64/pgdg-fedora-repo-latest.noarch.rpm
+echo "Enable PgAdmin4 Repos"
 sudo dnf install -y https://ftp.postgresql.org/pub/pgadmin/pgadmin4/yum/pgadmin4-fedora-repo-2-1.noarch.rpm
 
 echo "Enable RPM Fusion Repos"
@@ -83,7 +82,6 @@ sudo dnf install \
   php \
   composer \
   redis \
-  postgresql14-server \
   pgadmin4 \
   vala \
   vala-doc \
@@ -108,7 +106,6 @@ sudo dnf install \
   meld \
   vlc \
   smplayer \
-  xine-ui \
   bino \
   ffmpeg \
   mencoder \
@@ -159,6 +156,9 @@ fi
 
 # echo "Install Node.js 17.x"
 # sudo dnf module install nodejs:17/default
+
+echo "Install PostgreSQL 14.x"
+sudo dnf module install postgresql:14/server
 
 echo "Enable Snap Classic"
 sudo ln -s /var/lib/snapd/snap /snap
