@@ -229,6 +229,14 @@ chmod a+x ~/bin/pgstop
 
 You can now use the `pgstart` and `pgstop` commands to start/stop PostgreSQL.
 
+First we'd start PostgreSQL. Duh!
+
+```
+pgstart
+```
+
+And now we create a user.
+
 ```bash
 createuser --superuser --pwprompt yourUserName
 ```
