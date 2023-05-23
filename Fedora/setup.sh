@@ -168,7 +168,7 @@ flatpak install flathub org.signal.Signal
 
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
-sudo systemclt enable --now docker
+sudo systemctl enable --now docker
 echo "Add User to New Groups"
 sudo usermod -aG audio $USER
 sudo usermod -aG docker $USER
