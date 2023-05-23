@@ -41,6 +41,7 @@ sudo dnf install \
   mosh \
   snapd \
   vim \
+  neovim \
   zsh \
   byobu \
   levien-inconsolata-fonts \
@@ -116,6 +117,7 @@ sudo dnf install \
   electrum \
   brave-browser \
   code \
+  neovim-qt \
   meld \
   vlc \
   smplayer \

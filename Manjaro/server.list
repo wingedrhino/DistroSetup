@@ -2,6 +2,7 @@ arch-install-scripts
 archinstall
 emacs
 vim
+neovim
 yay
 byobu
 mosh
