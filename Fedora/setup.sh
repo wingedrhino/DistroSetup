@@ -72,6 +72,7 @@ sudo dnf install \
   moby-engine-zsh-completion \
   docker-compose \
   doctl \
+  awscli2 \
   kernel-headers \
   "@C Development Tools and Libraries" \
   "@Development Tools" \
@@ -113,6 +114,7 @@ sudo dnf install \
   f2fs-tools \
   gnome-disk-utility \
   keepassxc \
+  seahorse \
   electrum \
   firefox \
   code \
@@ -120,6 +122,7 @@ sudo dnf install \
   meld \
   vlc \
   smplayer \
+  qpdf \
   gthumb \
   ffmpeg \
   mencoder \

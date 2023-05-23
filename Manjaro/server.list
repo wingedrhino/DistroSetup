@@ -23,6 +23,7 @@ tesseract
 mencoder
 ffmpeg
 imagemagick
+qpdf
 hexedit
 shellcheck
 maven
@@ -62,6 +63,8 @@ cython
 ansible
 docker
 doctl
+aws-cli-v2
+google-cloud-cli
 redis
 minio
 minio-client

@@ -1,4 +1,6 @@
 #!/bin/sh
+echo "Snap: doctl"
+sudo snap install doctl
 echo "Snap: Chromium"
 sudo snap install chromium
 echo "Snap: Eclipse"
