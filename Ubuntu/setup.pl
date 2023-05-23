@@ -112,7 +112,7 @@ if(exists($cli_params{'all'})) {
 
 # Begin Setup
 
-print "Begin Ubuntu 20.04 Setup Process!\n";
+print "Begin Ubuntu 21.10 Setup Process!\n";
 
 my @installer_helpers = (
     'curl',
@@ -128,69 +128,30 @@ apt_install(@installer_helpers);
 print "Enable Universe Repo\n";
 apt_add_repo('universe');
 
-print "Enable the Proposed Repository but keep it disabled\n";
-print "Refer https://wiki.ubuntu.com/Testing/EnableProposed for more info!\n";
-apt_add_repo('deb http://archive.ubuntu.com/ubuntu/ focal-proposed restricted main multiverse universe');
-tee(
-    '/etc/apt/preferences.d/proposed-updates',
-    'Package: *',
-    'Pin: release a=focal-proposed',
-    'Pin-Priority: 400',
-);
-print "Done! Run 'apt install packagename/focal-proposed' to install a proposed version!\n";
-apt_update();
+if ($enable_desktop) {
+  print "Enable Signal Repo\n";
+  apt_add_key('https://updates.signal.org/desktop/apt/keys.asc');
+  apt_add_repo_file(
+      'signal',
+      'deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main',
+  );
+}
 
 if ($enable_server) {
     print "Enable Nodesource Repo\n";
     apt_add_key('https://deb.nodesource.com/gpgkey/nodesource.gpg.key');
     apt_add_repo_file(
         'nodesource',
-        'deb https://deb.nodesource.com/node_14.x focal main',
-        'deb-src https://deb.nodesource.com/node_14.x focal main',
+        'deb https://deb.nodesource.com/node_17.x impish main',
+        'deb-src https://deb.nodesource.com/node_17.x impish main',
     );
 
-    print "Enable Yarn Repo\n";
-    apt_add_key('https://dl.yarnpkg.com/debian/pubkey.gpg');
-    apt_add_repo_file('yarn', 'deb https://dl.yarnpkg.com/debian/ stable main');
-
-    print "Enable K8s Repo\n";
-    apt_add_key('https://packages.cloud.google.com/apt/doc/apt-key.gpg');
-    apt_add_repo_file('kubernetes', 'deb http://apt.kubernetes.io/ kubernetes-xenial main');
-
-    print "Enable PGDG Repo\n";
-    apt_add_key('https://www.postgresql.org/media/keys/ACCC4CF8.asc');
-    apt_add_repo_file(
-        'pgdg',
-        'deb [arch=amd64] http://apt.postgresql.org/pub/repos/apt/ focal-pgdg main',
-    );
     print "Enable Dart Repo\n";
     apt_add_key('https://dl-ssl.google.com/linux/linux_signing_key.pub');
     apt_add_repo_file(
         'dart_stable',
         'deb [arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main',
     );
-}
-
-if ($enable_desktop) {
-    print "Enable Wire Repo\n";
-    apt_add_key('https://wire-app.wire.com/linux/releases.key');
-    apt_add_repo_file(
-        'wire',
-        'deb [arch=amd64] https://wire-app.wire.com/linux/debian stable main',
-    );
-
-    print "Enable Riot IM (Matrix)\n";
-    manual_add_key(
-        'riot-im-archive-keyring',
-        'https://packages.riot.im/debian/riot-im-archive-keyring.gpg',
-    );
-    apt_add_repo_file(
-        'riot',
-        'deb [signed-by=/usr/share/keyrings/riot-im-archive-keyring.gpg] https://packages.riot.im/debian/ default main',
-    );
-
-    print "Enable Graphics Drivers Repo\n";
-    apt_add_repo('ppa:graphics-drivers/ppa');
 }
 
 if ($enable_developer) {
@@ -204,22 +165,6 @@ if ($enable_developer) {
         'deb https://dl.bintray.com/getinsomnia/Insomnia /',
     );
 
-    # TODO update URL to focal/mongodb-org/4.4 when the new version is out
-    print "Enable MongoDB Repo\n";
-    apt_add_key('https://www.mongodb.org/static/pgp/server-4.2.asc');
-    apt_add_repo_file(
-        'mongodb',
-        'deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse',
-    );
-
-    print "Enable Slack Repo\n";
-    apt_add_key('https://packagecloud.io/slacktechnologies/slack/gpgkey');
-    apt_add_repo_file(
-        'slack',
-        'deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main',
-        'deb-src https://packagecloud.io/slacktechnologies/slack/debian/ jessie main',
-    );
-
     print "Enable VSCode Repo\n";
     apt_add_key('https://packages.microsoft.com/keys/microsoft.asc');
     apt_add_repo_file(
@@ -228,20 +173,12 @@ if ($enable_developer) {
     );
 
     apt_install_deb(
-        'discord',
-        'https://discordapp.com/api/download?platform=linux&format=deb',
-    );
-
-    apt_install_deb(
         'mongodb-compass-isolated',
-        'https://downloads.mongodb.com/compass/mongodb-compass-isolated_1.21.2_amd64.deb',
+        'https://downloads.mongodb.com/compass/mongodb-compass-isolated_1.29.5_amd64.deb',
     );
 }
 
 if ($enable_proaudio) {
-    print "Enable Ubuntu Studio backports PPA\n";
-    apt_add_repo('ppa:ubuntustudio-ppa/backports');
-
     print "Enable OBS Studio Repo\n";
     apt_add_repo('ppa:obsproject/obs-studio');
 }
@@ -249,25 +186,6 @@ if ($enable_proaudio) {
 print "Initial apt-update and full-upgrade\n";
 apt_update();
 apt_upgrade();
-
-print "Install LTS Enablement Stack & Run Full-Upgrade\n";
-
-my @lts_enablement_pkgs = (
-'linux-generic-hwe-20.04-edge',
-);
-
-if ($workstation) {
-    push(@lts_enablement_pkgs, 'xserver-xorg-hwe-20.04');
-    push(@lts_enablement_pkgs, 'xserver-xorg-input-synaptics-hwe-20.04');
-}
-
-if ($audio) {
-    push(@lts_enablement_pkgs, 'linux-lowlatency-hwe-20.04-edge');
-}
-
-# TODO uncomment this when HWE gets released for 20.04
-# apt_install_recommends(@lts_enablement_pkgs);
-# apt_upgrade();
 
 my @list_server = (
     'byobu',
@@ -323,15 +241,13 @@ my @list_server = (
     'python3-certbot-nginx',
     'docker.io',
     'docker-compose',
-    'kubectl',
     'nodejs',
-    'yarn',
     'python3',
     'python3-pip',
     'python3-venv',
     'ipython3',
     'dart',
-    'golang-1.14-go',
+    'golang-1.17-go',
     'exfat-fuse',
     'exfat-utils',
     'adb',
@@ -349,49 +265,35 @@ my @list_server = (
 );
 
 my @list_desktop = (
-    'yakuake',
     'fonts-comic-neue',
     'cpupower-gui',
-    'arandr',
-    'xscreensaver',
     'keepassxc',
-    'pcmanfm-qt',
     'libreoffice',
-    'quassel-client',
     'telegram-desktop',
-    'wire-desktop',
-    'riot-desktop',
+    'signal-desktop',
     'deluge',
-    'kio-gdrive',
-    'partitionmanager',
     'gparted',
     'gnome-disk-utility',
-    'kde-full',
+    'gthumb',
+    'cheese',
+    'gnome-tweak-tool',
+    'dconf-editor',
 );
 
 my @list_developer = (
-    'thonny',
-    'spyder3',
     'code',
     'cubic',
-    'kdevelop',
-    'kdevelop-python',
-    'kdevelop-php',
     'insomnia',
-    'slack-desktop',
 );
 
 my @list_proaudio = (
     'linux-lowlatency',
-    'ubuntustudio-installer',
-    'ubuntustudio-menu',
-    'ubuntustudio-wallpapers',
-    'ubuntustudio-branding-common',
     'ubuntustudio-audio',
     'ubuntustudio-graphics',
     'ubuntustudio-photography',
     'ubuntustudio-publishing',
     'ubuntustudio-video',
+    'handbrake',
     'ubuntustudio-lowlatency-settings',
     'ubuntustudio-performance-tweaks',
     'carla',
@@ -437,4 +339,4 @@ system('systemctl enable docker');
 print "Copying over sample NGINX configs\n";
 system('cp ../nginx/*.conf /etc/nginx/sites-available/');
 
-print "Finished Ubuntu 20.04 Setup!\n";
+print "Finished Ubuntu 21.10 Setup!\n";
