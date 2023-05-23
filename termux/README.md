@@ -5,40 +5,277 @@ currently in the very early stages of automating its setup, so that I can run
 it on a bunch of old Android phones and treat them like tiny low powered
 servers.
 
+## Static IP
+
+Make sure your household WiFi router's DHCP server assigns the same IP to the
+phone on which Termux runs, whenever it connects. This would make your life a
+LOT easier. Example: [TP-Link](https://www.tp-link.com/us/support/faq/488/).
+
+If you can't do this, the next best option is to assign it a static IP from
+within your Android WiFi settings. What I like to do is to reserve IPs of
+192.168.blah.100 to 192.168.blah.200 for DHCP, and keep the IPs lower than 100
+for static assignment.
+
 ## SSH Setup
 
 Refer to wiki on [Remote Access](https://wiki.termux.com/wiki/Remote_Access)
 before you proceed, because the lack of a full-sized keyboard to monkey on
 makes Termux *slightly* painful before SSH is setup.
 
-### Static IP
+The quick tl;dr is this:
 
-Make sure your household WiFi router's DHCP server assigns the same IP to the
-phone on which Termux runs, whenever it connects. This would make your life a
-LOT easier. Example: [TP-Link](https://www.tp-link.com/us/support/faq/488/).
+```bash
+pkg install openssh
+sshd
+passwd
+```
 
-### Android Debugger based Port Forwarding
+You need to setup a password now.
+
+Then you go to your desktop and do
+
+```bash
+ssh 192.168.1.14 -p 8022
+```
+
+assumung 192.168.1.14 is the static IP you assigned your phone earlier, and
+then you login.
+
+Note the `-p 8022` part because we run `sshd` on a non-standard port.
+
+## Initial Setup from Desktop
+
+Now that you have SSH'ed into Termux from your desktop, it's time to do things
+from your desktop where you can type larger sentences without getting cramped.
+
+```bash
+pkg update
+pkg install vim curl wget byobu zsh dnsutils python nodejs perl
+pkg install postgresql redis
+mkdir -p ~/bin
+mkdir -p ~/ext/workspace
+cd ~/ext/workspace
+git clone https://github.com/wingedrhino/DistroSetup
+cp DistroSetup/dotfiles/zshrc ~/.zshrc
+cp DistroSetup/dotfiles/gitconfig ~/.gitconfig
+cp DistroSetup/dotfiles/vimrc ~/.vimrc
+cp DistroSetup/dotfiles/profile ~/.profile
+```
+
+Now switch to zsh as the default shell.
+
+```bash
+chsh
+```
+
+and then type `zsh`.
+
+Now, we log out back to our desktop.
+
+```bash
+exit
+```
+
+And then log back in
+
+```bash
+ssh 192.168.1.14 -p 8022
+```
+
+You're now logged into zsh, a MUCH better shell!
+
+Time for more customizations.
+
+
+```bash
+byobu-ctrl-a
+```
+
+Select emacs mode here. This lets you use `F12` as the key to activate commands
+in byobu instead of `ctrl-a` as in GNU Screen. On a chromebook, `F12` would be
+`Search + +` (i.e, hold Search and hit Plus).
+
+A quick walkthrough of byobu will show up in my blog at some point!
+
+## Optional: Disable Password based SSH
+
+You probably set a weak password to make it easy to type. This is never a good
+idea because anyone in your network can try logging into your Termux-equipped
+phone with that password. Disable password-based authentication and setup
+passwordless SSH!
+
+I already have docs covering that. But let's re-visit the main steps here:
+
+From your desktop/laptop, run
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+Copy the line and do this on the phone's Termux instance:
+
+```
+echo "pasted content here" >> ~/.ssh/authorized_keys
+```
+
+Now we logout and log back in to verify that we didn't need to enter our
+password to login.
+
+Now you may disable password-based login on SSH.
+
+```bash
+vim $PREFIX/etc/ssh/sshd_config
+```
+
+Set
+
+```
+PasswordAuthentication no
+```
+
+inside the file.
+
+## Create Widgets to launch programs
+
+There's a package on F-Droid called `Termux Widget`. This creates a 2x2 widget
+on your home screen, with shortcuts to executable files located in
+`~/.shortcuts`.
+
+Try this:
+
+```bash
+echo "sshd" >> ~/.shortcuts/sshd && chmod a+x ~/.shortcuts/sshd
+```
+
+It'll let you start sshd on Termux from your Android home screen.
+
+I also setup widgets to auto-launch PostgreSQL, Redis, Minio, etc for when I
+need to use my Android phone as an external server while I program from my
+rather resource-constrained Chromebook!
+
+## Android Debugger based Port Forwarding
 
 By default SSH runs on Port 8022 in Termux. ADB can forward this port on the
 phone to the same port on localhost. There's a nice blog about this subject
 [here](https://glow.li/technology/2016/9/20/access-termux-via-usb/).
 
-### Passwordless SSH
-
-You'd want to follow my existing docs for passwordless SSH. But before you go
-about adding entries into $HOME/.ssh/authorized_keys, I suggest you enable
-password-based login so that the first login is easy.
-
-Later you disable password-based login via
-
-```bash
-echo "PasswordAuthentication no" >> $HOME/.ssh/sshd_config
-```
-
 ## Get PostgreSQL Running
 
 Refer: https://wiki.termux.com/wiki/Postgresql
 
+### First-time Setup
+
+```bash
+mkdir -p $PREFIX/var/lib/postgresql
+initdb $PREFIX/var/lib/postgresql
+echo 'pg_ctl -D $PREFIX/var/lib/postgresql start' > ~/bin/pgstart
+chmod a+x ~/bin/pgstart
+echo 'pg_ctl -D $PREFIX/var/lib/postgresql stop' > ~/bin/pgstop
+chmod a+x ~/bin/pgstop
+```
+
+You can now use the `pgstart` and `pgstop` commands to start/stop PostgreSQL.
+
+```bash
+createuser --superuser --pwprompt yourUserName
+```
+
+Enter a password.
+
+Then do
+
+```bash
+createdb yourUserName
+```
+
+Now you can access the `psql` prompt like this:
+
+```bash
+psql -U yourUserName
+```
+
+You won't use this user/password/db combo in production; but you WILL use it
+to create more user+db+password combos - one for each app. This is the
+"normal" way of using PostgreSQL, without relying on Docker to create a brand
+new instance of PostgreSQL each time you start a new project!
+
+You can run PostgreSQL commands in this prompt, or just exit by typing
+
+```sql
+exit
+```
+
+### (Re)Creating New Users/Databases for Projects
+
+First, we open our psql prompt.
+
+```bash
+psql -U yourUserName
+```
+
+Then,
+
+```sql
+drop user if exists myprojectname;
+drop database if exists myprojectname_db;
+create database myprojectname_db;
+create user myprojectname with encrypted password 'myprojectname_12345';
+grant all privileges on database myprojectname_db to myprojectname;
+```
+
+## Running Redis
+
+Unlike PostgreSQL, Redis is a lot more fuss-free.
+
+
+```bash
+cd $HOME
+wget https://raw.githubusercontent.com/redis/redis/6.0/redis.conf
+echo 'redis-server ~/redis.conf' > ~/bin/startredis
+chmod a+x ~/bin/startredis
+echo 'killall redis-server' > ~/bin/stopredis
+chmod a+x ~/bin/stopredis
+vim  ~/redis.conf
+```
+
+Inside the `~/redis.conf` file, change `daemonize` to `yes` and uncomment the
+`requirepass` field and set it to something hard to guess (you'd need to use
+this password while connecting to Redis from your application).
+
+## Running Node.js v16
+
+This is currently not supported due to a couple of upstream issues
+https://github.com/termux/termux-packages/pull/6973
+
+So... Try to make do with v14 until it gets fixed?
+
+## Running Minio (an S3 clone)
+
+Unlike Redis and PostgreSQL, Minio is not supplied within the Termux
+repositories. You'd need to install it from source.
+
+```bash
+pkg install golang
+GO111MODULE=on go get github.com/minio/minio
+mkdir -p ~/miniodata
+echo 'MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password MINIO_REGION_NAME=fra1 minio server ~/miniodata' > ~/bin/miniostart
+chmod a+x ~/bin/miniostart
+```
+
+This will take a LONG time to install, especially on an older phone.
+
+But now you can run miniostart to launch minio!
+
+## Running Your Application's Databases on your phone
+
+I sometimes have to use my Chromebook to write software because I have frequent
+blackouts, and the Chromebook is the only device (other than the phone) with a
+huge battery life. But the RAM is a measly 4GB (which is the same as my phone).
+
+A useful trick is to run byobu, and launch various databases in their own
+dedicated tabs within byobu.
+
 ## Other Stuff
 
 More coming soon!
+
