@@ -19,6 +19,20 @@ PATH="$WORKSPACE_DIR/DistroSetup/DistroAgnostic:$PATH"
 # Application Setup
 #
 
+#
+## Node.js Setup w/ and w/o NVM.
+#
+if [ -f $HOME/.nvm/nvm.sh ]; then
+  echo "Found ~/.nvm/nvm.sh. We'll load up NVM!"
+  source $HOME/.nvm/nvm.sh
+else
+  NPM_PACKAGES="${HOME}/.npm-packages"
+  PATH="$PATH:$NPM_PACKAGES/bin"
+  # Preserve MANPATH if you already defined it somewhere in your config.
+  # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+  MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+fi
+
 # Google Cloud Setup
 PATH="/opt/google-cloud-sdk/bin:$PATH"
 
@@ -30,14 +44,8 @@ ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 PATH="$HOME_BIN/flutter/bin:$PATH"
 PATH="/opt/depot_tools:$PATH"
 
-# JavaScript Dev Setup
-PATH="$HOME/.yarn/bin:$PATH"
-
 # Rust Setup
 PATH="$HOME/.cargo/bin:$PATH"
-
-# Node.js Setup
-PATH="$PATH:/usr/local/nodejs/bin"
 
 # Golang Setup
 PATH="$HOME/go/bin:$PATH"
@@ -49,8 +57,9 @@ PATH="$PATH:$HOME/.local/bin"
 # Add local bin to path
 PATH="$LOCAL_BIN:$PATH"
 
-# Export Path
+# Export $PATH and $MANPATH
 export PATH
+export MANPATH
 
 #
 # Aliased commands
@@ -61,7 +70,6 @@ alias d=docker
 alias dc=docker-compose
 alias b='buffalo'
 alias g='git'
-
 
 #
 # If a .profile.local exists, source it
@@ -86,10 +94,4 @@ if [ -f $HOME/.ghcup/env ]; then
   echo "Found a $HOME/ghcup/env file. It'll be sourced."
   source $HOME/.ghcup/env
 fi
-
-#
-## nvm setup
-#
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 

@@ -19,6 +19,10 @@ mkdir -p $HOME/Documents/workspace $HOME/Documents/vault $HOME/Documents/appdata
 
 echo "If you want to change shell from $SHELL to zsh, run 'chsh -s /usr/bin/zsh'"
 
+echo "Setup npm to use a local directory for global packages"
+mkdir "${HOME}/.npm-packages"
+npm config set prefix "${HOME}/.npm-packages"
+
 echo "Add user to various groups"
 sudo gpasswd -a $USER vboxusers
 sudo gpasswd -a $USER audio
