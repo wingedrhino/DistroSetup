@@ -91,9 +91,6 @@ sudo dnf install \
   go \
   php \
   composer \
-  redis \
-  pgadmin4 \
-  pgcli \
   vala \
   vala-doc \
   "@Security Lab" \
@@ -173,15 +170,6 @@ sudo dnf install \
 
 echo "Run dnf Autoremove"
 sudo dnf autoremove
-
-echo "Setting up MongoDB Compass"
-if ! which mongodb-compass; then
-  echo "Installing MongoDB Compass"
-  sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.32.6.x86_64.rpm
-fi
-
-echo "Install PostgreSQL 14.x"
-sudo dnf module install postgresql:14/server
 
 echo "Enable FlatHub Repo"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
