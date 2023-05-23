@@ -38,6 +38,7 @@ sudo dnf install \
   vim \
   zsh \
   byobu \
+  levien-inconsolata-fonts \
   parallel \
   rclone \
   iperf3 \
