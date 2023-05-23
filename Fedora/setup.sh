@@ -94,6 +94,7 @@ sudo dnf install \
   gparted \
   gnome-disk-utility \
   keepassxc \
+  electrum \
   brave-browser \
   code \
   meld \
