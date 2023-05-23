@@ -146,20 +146,20 @@ sudo dnf autoremove
 echo "Setting up Minio"
 if ! which minio; then
   echo "Installing Minio"
-  sudo dnf install https://dl.min.io/server/minio/release/linux-amd64/minio-20211124231933.0.0.x86_64.rpm
-  sudo dnf install https://dl.min.io/client/mc/release/linux-amd64/mcli-20211116203736.0.0.x86_64.rpm
+  sudo dnf install https://dl.min.io/server/minio/release/linux-amd64/minio-20211210230339.0.0.x86_64.rpm
+  sudo dnf install https://dl.min.io/client/mc/release/linux-amd64/mcli-20211210001428.0.0.x86_64.rpm
 fi
 
 echo "Setting up MongoDB Compass"
 if ! which mongodb-compass; then
   echo "Installing MongoDB Compass"
-  sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.26.1.x86_64.rpm
+  sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.29.5.x86_64.rpm
 fi
 
 echo "Setting up Insomnia REST"
 if ! which insomnia; then
   echo "Installing Insomnia REST"
-  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402021.6.0/Insomnia.Core-2021.6.0.rpm
+  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402021.6.0/Insomnia.Core-2021.7.2.rpm
 fi
 
 # echo "Install Node.js 17.x"
