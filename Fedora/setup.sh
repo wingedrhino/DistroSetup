@@ -13,9 +13,6 @@ if ! grep -qe "keepcache=1" "/etc/dnf/dnf.conf"; then
   sudo su -c "echo 'keepcache=1' >> /etc/dnf/dnf.conf"
 fi
 
-echo "Enable PgAdmin4 Repos"
-sudo dnf install -y https://ftp.postgresql.org/pub/pgadmin/pgadmin4/yum/pgadmin4-fedora-repo-2-1.noarch.rpm
-
 echo "Enable RPM Fusion Repos"
 sudo dnf install \
   https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
@@ -25,8 +22,8 @@ echo "Enable Brave Repos"
 sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc 
 
-echo "Enable NodeSource Node.js 17.x Repos"
-curl -sL https://rpm.nodesource.com/setup_17.x | sudo bash -
+# echo "Enable NodeSource Node.js 17.x Repos"
+# curl -sL https://rpm.nodesource.com/setup_17.x | sudo bash -
 
 echo "Enable VS Code Repos"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -224,3 +221,4 @@ sudo flatpak update
 sudo dnf update
 
 echo "Done!"
+
