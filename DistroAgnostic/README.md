@@ -75,7 +75,15 @@ ufw enable
   * Set `GRUB_TIMEOUT=10` or whatever seconds you want the menu for
 * Run `update-grub`
 
-## KDE: Switch To Dark mode
+## KDE Setup
+
+Note: Since I originally wrote this section, I have moved back to Gnome in 2021,
+about 13 years after I last used it back in 2008.
+
+I'm more aligned with KDE as a user, but I like having a reliable base with
+predictable performance characteristics.
+
+### KDE: Switch To Dark mode
 
 * Select Breeze Dark as your theme, colours, and widget style
   after going to system-settings
@@ -92,7 +100,7 @@ ufw enable
 * In Kate, go to Settings -> Fonts & Colors and choose Breeze Dark in all the
   dropdowns you see to select a colour scheme.
 
-## KDE: Reset Filetype Associations
+### KDE: Reset Filetype Associations
 
 Sometimes when you install programs, they capture the filetype associations
 from existing ones. This can be extremely annoying.
@@ -104,42 +112,34 @@ from existing ones. This can be extremely annoying.
 
 This also resets a bunch of other things. But for now this should work!
 
-## Fake Webcam Setup
+## Gnome Setup
 
-[v4l2loopback](https://github.com/umlaeute/v4l2loopback) is a kernel module
-(which seems to not yet be in the Linux kernel due to bureaucratic reasons) you
-might use to create "virtual" cameras, that can be used for video effects,
-sharing the screen, etc, in apps that don't normally support this feature.
+Gnome 40 (the latest Gnome at the time of writing) seems to be pretty ready to
+use out-of-the-box. You can make the bottom dock NOT show removable media (if
+you prefer accessing them via nautilus instead).
 
-Run
 
-```bash
-cp v4l2loopback-options.conf /etc/modprobe.d/
-cp v4l2loopback-load.conf /etc/modules-load.d/
-```
+### Clipboard Setup
 
-To copy the default options (see the GitHub link above for what they mean) I
-use, along with making it load up by default on system startup.
 
-### Daniel Llewellyn & Benjamin Elder's fakecam
 
-Install [fakecam from snapcraft](https://snapcraft.io/fakecam) via
-`sudo snap install fakecam --edge` and connect it to your camera via
-`snap connect fakecam:camera`.
+## Pro Video
 
-I've already setup v4l2loopback (in the previous steps) to work with this.
+Note: This section is VERY MUCH a work-in-progress.
 
-It's an implementation of Benjamin Elder's
-[Open Source Virtual Background](https://elder.dev/posts/open-source-virtual-background/)
-and loads of fun if you have a fast enough GPU. Unfortunately, I've a rather
-pedestrian Intel i5-7200u CPU with an onboard Intel HD Graphics 620. This does
-not cut it :-(
 
-### Share Screen
+### Virtual Camera with OBS Studio
 
-TODO still figuring this out!
+You can use OBS Studio to broadcast an app or the whole desktop onto a video
+stream and then publish this video as a virtual camera. You can then select this
+camera as your input source in an app like Telegram, so that you can have screen
+share facilities EVERYWHERE instead of just on an app or two.
+
 
 ## Pro Audio
+
+Note: This section is going to get a MASSIVE overhaul as we replace jack2 &
+pulseaudio with PipeWire.
 
 ### High Level Steps
 

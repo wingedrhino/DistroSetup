@@ -2,9 +2,9 @@
 
 Here's scripts and docs for setting up a Manjaro Workstation from Scratch!
 
-I'm assuming that you want to setup Manjaro with KDE, want all the usual office
-and internet utilties, you'd like to be able to develop software in here, and
-would like to also turn this into a multimedia workstation, with a focus on
+I'm assuming that you want to setup Manjaro with Gnome, want all the usual
+office and internet utilties, you'd like to be able to develop software in here,
+and would like to also turn this into a multimedia workstation, with a focus on
 Pro Audio. I'll also add some packages for video and image editing, but at this
 moment I haven't tested them enough.
 
@@ -17,7 +17,7 @@ machine
 
 #### Intel/AMD Desktops and Laptops
 
-1. Download ISO from [here](https://manjaro.org/downloads/official/kde/)
+1. Download ISO from [here](https://manjaro.org/downloads/official/gnome/)
 3. Insert a USB drive and determine its location in `/dev`. I'm assuming it's
    `/dev/sdb` for the purpose of this section.
 3. Run `sudo dd if=/path/to/the.iso of=/dev/sdb bs=4M status=progress oflag=sync`
@@ -33,7 +33,7 @@ restore `/` to a different version if something goes wrong.
    
 #### Raspberry Pi 4 Model B
 
-1. Download image from [here](https://manjaro.org/download/arm/raspberry-pi-4/arm8-raspberry-pi-4-kde-plasma/)
+1. Download image from [here](https://manjaro.org/download/arm/raspberry-pi-4/arm8-raspberry-pi-4-gnome/)
 2. Extract the `.xz` file via `unxz /path/to/image.img.xz`
 3. Pop a >= 32GB MicroSD card into a MicroSD to SD adaptor and stick it into
    the SD Card slot in your laptop/desktop. Determine it's location in `/dev`.
@@ -172,8 +172,8 @@ The steps there are based on the output of realTimeConfigQuickScan.
 
 ## Raspberry Pi 4
 
-I'm going to try and make things so that the same desktop (Manjaro KDE) runs on
-both a 64bit x86 laptop and a 64bit ARMv8 RaspberryPi 4. You can thus use the
+I'm going to try and make things so that the same desktop (Manjaro Gnome) runs
+on both a 64bit x86 laptop and a 64bit ARMv8 RaspberryPi 4. You can thus use the
 same scripts on both platforms!
 
 For now, it seems like a bunch of important packages aren't available, the
@@ -183,3 +183,8 @@ most prominent being IDEs like VS Code.
 ## Setup VirtualBox in Manjaro
 
 Refer [the official wiki](https://wiki.manjaro.org/index.php?title=VirtualBox)
+
+I have since depreciated VirtualBox in my own workflows, using docker for
+running/testing applications and (still in todo) Virtual Machine Manager for
+testing entire VMs.
+
