@@ -75,7 +75,7 @@ sudo dnf install \
   python3-mypy \
   python3-mypy_extensions \
   pycharm-community \
-  pycharm-commmunity-doc \
+  pycharm-community-doc \
   pycharm-community-plugins \
   rust \
   cargo \
