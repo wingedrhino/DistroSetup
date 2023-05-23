@@ -73,6 +73,9 @@ to have a base system that has the same packages I have.**.
 If there's any packages that are present in the Arch/Manjaro repositories that
 aren't in `server.list` or `workstation.list`, add them to `extras.list`.
 
+You can copy the contents of, say `workstation-pipewire.list` to `extras.list`
+to setup Manjaro with PipeWire.
+
 ### Run rankmirrors.sh
 
 The very first thing you should do before you proceed with installing a large

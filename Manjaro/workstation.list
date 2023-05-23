@@ -16,8 +16,6 @@ gnome-disk-utility
 modem-manager-gui
 electron
 chromium
-bitcoin-qt
-electrum
 zeroconf-ioslave
 calligra-plan
 smplayer
@@ -77,14 +75,7 @@ wine
 wine-mono
 wine-gecko
 playonlinux
-manjaro-pipewire
-easyeffects
-pipewire
-pipewire-docs
-pipewire-alsa
-pipewire-pulse
-pipewire-jack
-realtime
+ealtime
 pro-audio
 lv2-plugins
 vst-plugins
