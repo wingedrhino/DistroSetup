@@ -62,6 +62,7 @@ sudo dnf install \
   gvfs-fuse \
   android-tools \
   rpi-imager \
+  arm-image-installer \
   git-all \
   nginx \
   bind \
