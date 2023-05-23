@@ -86,13 +86,11 @@ sudo dnf install \
   rust \
   cargo \
   perl \
-  yarnpkg \
   java-11-openjdk \
   java-11-openjdk-devel \
   java-latest-openjdk \
   java-latest-openjdk-devel \
   go \
-  nodejs \
   php \
   composer \
   redis \
@@ -111,7 +109,6 @@ sudo dnf install \
   gnome-shell-extension-auto-move-windows \
   gnome-shell-extension-caffeine \
   gnome-shell-extension-freon \
-  gnome-shell-extension-emoji-selector \
   gnome-shell-extension-gpaste \
   gnome-shell-extension-netspeed \
   gnome-shell-extension-sound-output-device-chooser \
@@ -178,23 +175,16 @@ sudo dnf install \
 echo "Run dnf Autoremove"
 sudo dnf autoremove
 
-echo "Setting up Minio"
-if ! which minio; then
-  echo "Installing Minio"
-  sudo dnf install https://dl.min.io/server/minio/release/linux-amd64/minio-20211210230339.0.0.x86_64.rpm
-  sudo dnf install https://dl.min.io/client/mc/release/linux-amd64/mcli-20211210001428.0.0.x86_64.rpm
-fi
-
 echo "Setting up MongoDB Compass"
 if ! which mongodb-compass; then
   echo "Installing MongoDB Compass"
-  sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.31.2.x86_64.rpm
+  sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.32.6.x86_64.rpm
 fi
 
 echo "Setting up Insomnia REST"
 if ! which insomnia; then
   echo "Installing Insomnia REST"
-  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402022.3.0/Insomnia.Core-2022.3.0.rpm
+  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402022.3.0/Insomnia.Core-2022.5.1.rpm
 fi
 
 echo "Install PostgreSQL 14.x"
@@ -214,11 +204,6 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 
 echo "Install Signal via FlatHub"
 sudo flatpak install flathub org.signal.Signal
-
-echo "Install mattjakeman Extension Manager via FlatHub"
-sudo flatpak install flathub com.mattjakeman.ExtensionManager
-
-
 
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
