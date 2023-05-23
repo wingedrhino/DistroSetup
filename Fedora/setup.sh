@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Begin Fedora Workstation Setup"
-echo "This sets up the machine for use as a headless development server"
+echo "This sets up the machine for use as a workstation"
 
 if ! grep -qe "fastestmirror=1" "/etc/dnf/dnf.conf"; then
   echo "Add fastestmirror=1 to /etc/dnf/dnf.conf"
@@ -17,10 +17,6 @@ echo "Enable RPM Fusion Repos"
 sudo dnf install \
   https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
   https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-echo "Enable Brave Repos"
-sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
-sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc 
 
 echo "Enable VS Code Repos"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -117,7 +113,6 @@ sudo dnf install \
   keepassxc \
   electrum \
   firefox \
-  brave-browser \
   code \
   neovim-qt \
   meld \
@@ -171,15 +166,6 @@ sudo dnf install \
 echo "Run dnf Autoremove"
 sudo dnf autoremove
 
-echo "Enable FlatHub Repo"
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-echo "Install Redis Desktop Manager via Flatpak"
-sudo flatpak install flathub app.resp.RESP
-
-echo "Install Signal via FlatHub"
-sudo flatpak install flathub org.signal.Signal
-
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
 sudo systemctl enable --now docker
@@ -189,7 +175,6 @@ sudo usermod -aG audio $USER
 sudo usermod -aG docker $USER
 
 echo "Final System Updates - these are NOT unattended!"
-sudo flatpak update
 sudo dnf update
 
 echo "Done!"
