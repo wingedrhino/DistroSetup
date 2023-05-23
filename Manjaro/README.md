@@ -118,6 +118,13 @@ Run `cd ../DistroAgnostic` and `less README.md`!
 * Edit `/usr/share/applications/signal-desktop.desktop`
 * Add option `--use-tray-icon` to the command
 
+## Upgrade your Kernel
+
+Go to `System Settings` -> `Kernel` and install the latest non-rc kernel. From
+what I've seen, Manjaro keeps changing the way it names the kernel package. So
+this is the safest place to perform upgrades from. Usually you'd get notified
+when a newer kernel is available; and you'd best do that install manually!
+
 ## Misc Stuff
 
 * [Fix GRUB](https://wiki.manjaro.org/index.php/Restore_the_GRUB_Bootloader)
