@@ -80,10 +80,30 @@ Note the `-p 8022` part because we run `sshd` on a non-standard port.
 Now that you have SSH'ed into Termux from your desktop, it's time to do things
 from your desktop where you can type larger sentences without getting cramped.
 
+I'm listing the typical packages I usually need in the install here. You might
+want to switch a few things around. For example, you might install PHP or Ruby.
+But please don't let any small children watch you while you do so, you
+disgusting brute!
+
 ```bash
 pkg update
-pkg install vim curl wget byobu zsh dnsutils python nodejs perl
-pkg install postgresql redis
+pkg install \
+  git \
+  vim \
+  curl \
+  wget \
+  byobu \
+  zsh \
+  dnsutils \
+  python \
+  nodejs \
+  yarn \
+  ripgrep \
+  perl \
+  golang \
+  postgresql \
+  redis \
+  -y
 mkdir -p ~/bin
 mkdir -p ~/ext/workspace
 cd ~/ext/workspace
@@ -176,6 +196,7 @@ on your home screen, with shortcuts to executable files located in
 Try this:
 
 ```bash
+mkdir -p ~/.shortcuts
 echo "sshd" >> ~/.shortcuts/sshd && chmod a+x ~/.shortcuts/sshd
 ```
 
@@ -281,10 +302,19 @@ https://github.com/termux/termux-packages/pull/6973
 
 So... Try to make do with v14 until it gets fixed?
 
+## Install VS Code Server
+
+This is a ridiculously cool project that lets you spin up a server that runs
+VS Code within Termux. Awesome, eh? These guys actually have dedicated
+[Termux Docs](https://github.com/cdr/code-server/blob/main/docs/termux.md).
+
+
+
 ## Running Minio (an S3 clone)
 
 Unlike Redis and PostgreSQL, Minio is not supplied within the Termux
-repositories. You'd need to install it from source.
+repositories. You'd need to install it from source. So yeah, you'd want to
+install `golang` if you haven't already done that!
 
 ```bash
 pkg install golang
