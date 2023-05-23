@@ -9,7 +9,13 @@ sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
 
 
 echo "Install New Software"
-sudo dnf install brave-browser;
+sudo dnf install \
+  pycharm-community \
+  pycharm-community-doc \
+  pycharm-community-plugins \
+  nautilus-image-converter \
+  bino \
+  brave-browser;
 
 
 echo "Enable FlatHub Repo"
