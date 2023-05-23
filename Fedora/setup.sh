@@ -87,6 +87,7 @@ sudo dnf install \
   vala \
   vala-doc \
   "@Security Lab" \
+  gnome-tweaks \
   nautilus-dropbox \
   nautilus-image-converter \
   nautilus-extensions \
