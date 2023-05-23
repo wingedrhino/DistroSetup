@@ -44,6 +44,7 @@ sudo dnf install \
   parallel \
   rclone \
   iperf3 \
+  tilix \
   nmap \
   iotop \
   htop \
