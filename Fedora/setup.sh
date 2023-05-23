@@ -85,7 +85,6 @@ sudo dnf install \
   rust \
   cargo \
   perl \
-  haskell-platform \
   yarnpkg \
   java-11-openjdk \
   java-11-openjdk-devel \
