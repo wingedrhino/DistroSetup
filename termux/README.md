@@ -258,7 +258,7 @@ repositories. You'd need to install it from source.
 pkg install golang
 GO111MODULE=on go get github.com/minio/minio
 mkdir -p ~/miniodata
-echo 'MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password MINIO_REGION_NAME=fra1 minio server ~/miniodata' > ~/bin/miniostart
+echo 'MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password MINIO_REGION_NAME=fra1 nohup ~/go/bin/minio server ~/miniodata &' > ~/bin/miniostart
 chmod a+x ~/bin/miniostart
 ```
 
@@ -272,8 +272,39 @@ I sometimes have to use my Chromebook to write software because I have frequent
 blackouts, and the Chromebook is the only device (other than the phone) with a
 huge battery life. But the RAM is a measly 4GB (which is the same as my phone).
 
-A useful trick is to run byobu, and launch various databases in their own
-dedicated tabs within byobu.
+```bash
+echo "pgstart" > ~/.shortcuts/dbup.sh
+echo "startredis" >> ~/.shortcuts/dbup.sh
+echo "miniostart" >> ~/.shortcuts/dbup.sh
+chmod a+x ~/.shortcuts/dbup.sh
+```
+
+Now your databases can all be launched from the termux widget!
+
+## Configuring Databases for Remote Access
+
+This has been disabled for safety reasons by default. What you can instead do
+is to create an ssh tunnel.
+
+Add the following entry to `~/.ssh/config` on the laptop/desktop from where
+you'd like to be able to access Termux's databases:
+
+
+```
+# Termux
+Host 192.168.1.14
+    HostName 192.168.1.14
+    LocalForward localhost:19000 localhost:9000
+    LocalForward localhost:15432 localhost:5432
+    LocalForward localhost:16379 localhost:6379
+    Port 8022
+```
+
+Now you can simply do `ssh 192.168.1.14` and you'd automatically forward the
+databases to local ports.
+
+I tend to add 10000 to the port numbers because I wouldn't like a conflict
+between a locally installed database and one which is remotely accessed.
 
 ## Other Stuff
 
