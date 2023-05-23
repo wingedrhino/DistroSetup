@@ -172,6 +172,13 @@ if ($enable_developer) {
         'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main',
     );
 
+    print "Enable pgAdmin4 Repo\n";
+    apt_add_key('https://www.pgadmin.org/static/packages_pgadmin_org.pub');
+    apt_add_repo_file(
+        'pgadmin4',
+        'deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/impish pgadmin4 main',
+    );
+
     apt_install_deb(
         'mongodb-compass-isolated',
         'https://downloads.mongodb.com/compass/mongodb-compass-isolated_1.29.5_amd64.deb',
