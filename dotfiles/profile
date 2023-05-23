@@ -81,3 +81,7 @@ if [ -f $PWD/.env.local ]; then
   source $PWD/.env.local
 fi
 
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi
+
