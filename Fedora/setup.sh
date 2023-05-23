@@ -71,6 +71,7 @@ sudo dnf install \
   "@Development Tools" \
   "@Python Classroom" \
   "@Python Science" \
+  pipx \
   rust \
   cargo \
   yarnpkg \
