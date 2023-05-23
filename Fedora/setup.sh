@@ -45,8 +45,9 @@ sudo dnf install \
   htop \
   atop \
   nethogs \
-  ntp \
-  ntpdate \
+  ntpstat \
+  ntpsec \
+  ntpcheck \
   gnupg \
   sshfs \
   gvfs-mtp \
@@ -77,15 +78,6 @@ sudo dnf install \
   vala \
   vala-doc \
   "@Security Lab" \
-  "@Authoring and Publishing" \
-  "@Audio Production" \
-  ffmpeg \
-  mencoder \
-  ImageMagick \
-  keepassx \
-  brave-browser \
-  code \
-  meld \
   nautilus-dropbox \
   nautilus-image-converter \
   nautilus-extensions \
@@ -97,12 +89,17 @@ sudo dnf install \
   chromium \
   gparted \
   gnome-disk-utility \
-  calibre \
+  keepassx \
+  brave-browser \
+  code \
+  meld \
   vlc \
   smplayer \
   xine-ui \
   bino \
-  libreoffice \
+  ffmpeg \
+  mencoder \
+  ImageMagick \
   obs-studio \
   HandBrake-gui \
   olive \
@@ -113,6 +110,10 @@ sudo dnf install \
   blender \
   krita \
   darktable \
+  "@Audio Production" \
+  libreoffice \
+  calibre \
+  "@Authoring and Publishing" \
   google-roboto-fonts \
   google-roboto-mono-fonts \
   google-roboto-slab-fonts \
