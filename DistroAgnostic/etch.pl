@@ -31,3 +31,4 @@ print "Running command '$cmd'\n";
 
 system($cmd);
 
+system('sync');
