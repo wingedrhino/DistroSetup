@@ -4,7 +4,7 @@ This page documents the way I setup Fedora on my laptops, while the scripts in
 this folder provide some level of automation so that you may perform the setup
 in an unattended manner.
 
-The base installation is Fedora 34 Workstation (Gnome), with added tools for
+The base installation is Fedora 36 Workstation (Gnome), with added tools for
 software development, audio production, multimedia creation, general
 productivity, and a better commandline experience, all done for my personal
 needs.

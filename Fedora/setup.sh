@@ -152,6 +152,17 @@ sudo dnf install \
   easyeffects \
   lv2-setBfree-plugins \
   lv2-calf-plugins-gui \
+  lv2-guitarix-plugins \
+  lv2-drumkv1 \
+  lv2-fabla \
+  lv2-x42-plugins \
+  lv2-samplv1 \
+  lv2-mdala-plugins \
+  lv2-mdaEPiano \
+  lv2-zynadd-plugins \
+  lv2-vocoder-plugins \
+  lv2-sorcer \
+  lv2-amsynth-plugin \
   Carla \
   hydrogen \
   libreoffice \
