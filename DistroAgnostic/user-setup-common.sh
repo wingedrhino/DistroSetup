@@ -19,6 +19,6 @@ cp ../dotfiles/gitconfig ~/.gitconfig
 echo "Create essential directories"
 mkdir -p $HOME/ext/bin $HOME/ext/workspace $HOME/ext/vault $HOME/ext/appdata $HOME/bin $HOME/go
 
-echo "Change shell from $SHELL to /usr/bin/zsh"
-chsh -s /usr/bin/zsh
+echo "Change shell from $SHELL to zsh"
+chsh -s zsh
 
