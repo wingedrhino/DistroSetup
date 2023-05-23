@@ -53,6 +53,18 @@ Note: As of now (2020-04-25) the docs do not ask you to do the right thing.
 Ubuntu's repos have `certbot` and `python3-certbot-nginx` in them. The docs ask
 you to install `python-certbot-nginx`, which has beeen depreciated.
 
+## Rate limiting incoming requests across all servers
+
+See https://stackoverflow.com/questions/35950549/limit-nginx-max-concurrent-connections
+
+a tl;dr is that you edit your `nginx.conf` file and inside the `http` section,
+you add
+
+```
+limit_conn_zone $server_name zone=servers:1m;
+limit_conn servers 1;
+```
+
 ## Sample Configurations
 
 ### Subdomain Examples
