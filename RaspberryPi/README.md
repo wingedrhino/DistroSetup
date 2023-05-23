@@ -132,24 +132,22 @@ You'd see a couple of devices on the network now. The one with the ip address
 that ends with 1 (like 10.42.0.1) is your host laptop. The "other" one is the
 Raspberry Pi.
 
-This IP Address can be random, so you'd need to do this each time you try to
-connect to a Pi.
+Alternatively, you can also just check if port 22 is open in a network. You can
+do it via `nmap -p 22 192.168.0.0/24`. This explicitly checks if the port 22 is
+open for your device on the network. On a public WiFi network, there shouldn't
+be any (hopefully) other than your Pi.
 
-I should _probably_ try automating these steps at some point!
+Anyway, IP Address can be random, so you'd need to do this each time you try to
+connect to a Pi. NetworkManager, Android hotspots (from Android 10), and public
+WiFi networks wouldn't always let you set a static IP for the Pi, so usually
+this is the best way to make things work.
 
-This solution also works if you are running your Pi off a mobile phone hotspot.
-Your laptop and phone would need to be on the same hotspot for this to work.
-The IP address of your laptop is easy to learn, the IP address of your phone
-would be whatever default gateway gets configured in the hotspot, and then the
-third entry would be the Raspberry Pi.
+Eventually, you could do something funky like writing a server which does
+nothing that listens on port 666, and then look for THIS port to uniquely
+identify that you are on a Raspberry Pi.
 
-Note that due to changes in Android 10 (which you can google), hotspots have
-randomized IP addresses and randomized gateway addresses. So you can't get
-any of these values to be predictable.
-
-If you want a simpler way out, automate this shit in Python! Pretty sure there
+I should _probably_ try automating these steps at some point! Pretty sure there
 are wrappers around ip link, ip route, and nmap in Python.
-
 
 ## Reference Links for OTG Gadget Mode
 
