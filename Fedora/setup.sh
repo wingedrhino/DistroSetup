@@ -212,8 +212,8 @@ sudo snap install redis-desktop-manager
 echo "Enable FlatHub Repo"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-echo "Install Signal & Telegram via FlatHub"
-sudo flatpak install flathub org.signal.Signal org.telegram.Desktop
+echo "Install Signal via FlatHub"
+sudo flatpak install flathub org.signal.Signal
 
 echo "Install mattjakeman Extension Manager via FlatHub"
 sudo flatpak install flathub com.mattjakeman.ExtensionManager
