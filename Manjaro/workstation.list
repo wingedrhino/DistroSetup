@@ -80,6 +80,7 @@ pro-audio
 lv2-plugins
 vst-plugins
 vst3-plugins
+handbrake
 kdenlive
 krita
 inkscape
