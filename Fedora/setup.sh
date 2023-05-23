@@ -106,6 +106,7 @@ sudo dnf install \
   meld \
   vlc \
   smplayer \
+  gthumb \
   bino \
   ffmpeg \
   mencoder \
