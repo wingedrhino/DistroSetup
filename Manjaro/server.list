@@ -21,7 +21,6 @@ mercurial
 tesseract
 mencoder
 ffmpeg
-youtube-dl
 imagemagick
 hexedit
 shellcheck
