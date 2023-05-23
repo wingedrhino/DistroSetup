@@ -178,12 +178,6 @@ if ! which mongodb-compass; then
   sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.32.6.x86_64.rpm
 fi
 
-echo "Setting up Insomnia REST"
-if ! which insomnia; then
-  echo "Installing Insomnia REST"
-  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402022.3.0/Insomnia.Core-2022.5.1.rpm
-fi
-
 echo "Install PostgreSQL 14.x"
 sudo dnf module install postgresql:14/server
 
@@ -198,6 +192,9 @@ sudo snap install node --classic --channel=18
 
 echo "Install Redis Desktop Manager via Snap"
 sudo snap install redis-desktop-manager
+
+echo "Install Insomnia via Snap"
+sudo snap install insomnia
 
 echo "Enable FlatHub Repo"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
