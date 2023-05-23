@@ -39,6 +39,19 @@ escape from having to first install git to run these scripts.
 Run `./setup.sh` to install a bunch of software automatically as a starting
 point.
 
+## Gnome Setup
+
+Fedora comes with a barebones gnome setup. Press super, type extensions, open
+the extensions app, and setup dash-to-dock and gsconnect. The former gives you
+a dock that pops up when your mouse is at the bottom of the display, and the
+later gives you a KDEConnect compatible Gnome extension.
+
+Next, press super, type tweaks, open the gnome tweaks app, go to the top bar
+section, and select EVERYTHING there.
+
+There! Your gnome is now setup.
+
+
 ## CPU Frequency Scaling
 
 To ensure that your CPU is at the highest performance setting and isn't being

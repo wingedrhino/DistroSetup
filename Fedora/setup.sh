@@ -30,6 +30,7 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 echo "Install New Software"
 sudo dnf install \
   NetworkManager-tui \
+  protonvpn-cli \
   util-linux-user \
   fail2ban \
   mosh \
@@ -83,6 +84,7 @@ sudo dnf install \
   nautilus-extensions \
   nautilus-gsconnect \
   gnome-shell-extension-gsconnect \
+  gnome-shell-extension-dash-to-dock \
   telegram-desktop \
   hexchat \
   deluge \
