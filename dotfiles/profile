@@ -4,15 +4,13 @@ export EDITOR=vim
 # Bookmarks
 #
 
-EXT_DIR="$HOME/ext" # Extended storage directory
-EXT_BIN="$EXT_DIR/bin" # I treat this sort of like a local /opt
-LOCAL_BIN="$HOME/bin" # Unlike above this only has small scripts and/or symlinks
-WORKSPACE_DIR="$EXT_DIR/workspace" # All software development happens here!
-VAULT_DIR="$EXT_DIR/vault" # All downloaded package archives go here
-DOWNLOAD_DIR="$HOME/Downloads" # Temporary directory during downloads
 DOCUMENTS_DIR="$HOME/Documents"
+LOCAL_BIN="$HOME/.local/bin"
+HOME_BIN="$HOME/bin"
+WORKSPACE_DIR="$DOCUMENTS_DIR/workspace" # All software development happens here!
+DOWNLOAD_DIR="$HOME/Downloads" # Temporary directory during downloads
 TMP_DIR="$HOME/tmp" # Working directory periodically cleared
-APPDATA_DIR="$EXT_DIR/appdata" # Large, application-specific data stored here
+APPDATA_DIR="$DOCUMENTS_DIR/appdata" # Large, application-specific data stored here
 
 # Add Custom Scripts
 PATH="$WORKSPACE_DIR/DistroSetup/DistroAgnostic:$PATH"
@@ -29,7 +27,7 @@ PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Mobile Dev Setup
 ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-PATH="$EXT_BIN/flutter/bin:$PATH"
+PATH="$HOME_BIN/flutter/bin:$PATH"
 PATH="/opt/depot_tools:$PATH"
 
 # JavaScript Dev Setup
