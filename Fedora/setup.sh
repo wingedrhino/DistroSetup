@@ -84,6 +84,7 @@ sudo dnf install \
   pycharm-community-plugins \
   rust \
   cargo \
+  haskell-platform \
   yarnpkg \
   java-11-openjdk \
   java-11-openjdk-devel \
