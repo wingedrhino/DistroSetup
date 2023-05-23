@@ -1,15 +1,15 @@
 # Ubuntu Configuration Automation
 
-This repository contains scripts to automate the setup of Ubuntu 20.04 according
+This repository contains scripts to automate the setup of Ubuntu 21.10 according
 to my specific preferences.
 
-I use Ubuntu 20.04 on my VPS boxes, and Kubuntu 20.04 with Ubuntu Studio tools
-on my workstations (until UbuntuStudio 20.10 comes out with KDE as default!).
+I use Ubuntu 21.04 on my VPS boxes, and Ubuntu 21.10 with Ubuntu Studio tools
+on my workstations.
 
 ## Server Setup
 
 I'm assuming you're on a random cloud provider (or a virtual machine) running
-**Ubuntu Server 20.04 LTS**.
+**Ubuntu Server 21.10**.
 
 First, create a non-root user if you are currently root and give this user
 administrative privileges. DigitalOcean for example by default makes you login
@@ -47,8 +47,8 @@ And finish the common post-install tasks there!
 
 ## Workstation Setup
 
-I'm assuming you're on a laptop and you installed **Kubuntu 20.04 LTS**. I
-also assume you have `sudo` privileges because this is the primary user.
+I'm assuming you're on a laptop and you installed **Ubuntu 21.10**. I also
+assume you have `sudo` privileges because this is the primary user.
 
 ```bash
 mkdir -p $HOME/ext/workspace
@@ -105,18 +105,3 @@ uid                 Ubuntu CD Image Automatic Signing Key (2012) cdimage@ubuntu.
 gpg --keyid-format long --verify SHA256SUMS.gpg SHA256SUMS
 ```
 
-## Xfce Bugfix: light-locker messes up somewhow
-
-Note: This section doesn't seem to be a problem anymore with KDE. But I'm
-mentioning this in case any of you find this from an UbuntuStudio 20.04
-installation.
-
-You'd need to replace `light-locker` with `xscreensaver` because the former is
-buggy and would prevent you from unlocking your screen. Atleast that's how it
-is on my setup.
-
-If you forgot to replace `light-locker` with `xscreensaver`, you may run
-`loginctl list-sessions` and then run `loginctl unlock-session [id]` where `id`
-is the session of yours which you spotted in `list-sessions`. The included
-`unlockscreen.sh` does this for you automatically via a messy but effective
-one-liner.
