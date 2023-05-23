@@ -132,6 +132,18 @@ sudo dnf autoremove
 echo "Install Node.js 16.x"
 sudo dnf module install nodejs:16/default
 
+echo "Enable Snap Classic"
+sudo ln -s /var/lib/snapd/snap /snap
+
+echo "Install Heroku CLI via Snap"
+sudo snap install heroku --classic
+
+echo "Enable FlatHub Repo"
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+echo "Install Signal Messenger via FlatHub"
+flatpak install flathub org.signal.Signal
+
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
 sudo systemclt enable --now docker
