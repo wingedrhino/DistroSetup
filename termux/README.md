@@ -35,6 +35,9 @@ Install the following packages:
 * Termux:Styling
   * Extra themes for Termux.
 
+Add the termux widget to your home screen. You'd do this the way you'd usually
+add a widget (long pressing the home screen) and looking for the right one.
+
 Launch Termux.
 
 ## Static IP
@@ -94,6 +97,7 @@ pkg install \
   wget \
   byobu \
   zsh \
+  build-essential \
   dnsutils \
   python \
   nodejs \
@@ -282,6 +286,7 @@ drop database if exists myprojectname_db;
 create database myprojectname_db;
 create user myprojectname with encrypted password 'myprojectname_12345';
 grant all privileges on database myprojectname_db to myprojectname;
+\q
 ```
 
 ## Running Redis
@@ -316,7 +321,15 @@ This is a ridiculously cool project that lets you spin up a server that runs
 VS Code within Termux. Awesome, eh? These guys actually have dedicated
 [Termux Docs](https://github.com/cdr/code-server/blob/main/docs/termux.md).
 
-
+```bash
+yarn global add code-server
+cd ~/.config/yarn/global/node_modules/code-server
+ln -s $PREFIX/bin/rg ./lib/vscode/node_modules/vscode-ripgrep/bin/rg
+echo 'nohup code-server &' > ~/bin/codeserverstart
+chmod a+x ~/bin/codeserverstart
+echo 'killall code-server' > ~/bin/codeserverstop
+chmod a+x ~/bin/codeserverstop
+```
 
 ## Running Minio (an S3 clone)
 
@@ -326,10 +339,12 @@ install `golang` if you haven't already done that!
 
 ```bash
 pkg install golang
-GO111MODULE=on go get github.com/minio/minio
+go get github.com/minio/minio
 mkdir -p ~/miniodata
 echo 'MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password MINIO_REGION_NAME=fra1 nohup ~/go/bin/minio server ~/miniodata &' > ~/bin/miniostart
 chmod a+x ~/bin/miniostart
+echo 'killall minio' > ~/bin/miniostop
+chmod a+x ~/bin/miniostop
 ```
 
 This will take a LONG time to install, especially on an older phone.
@@ -346,10 +361,12 @@ huge battery life. But the RAM is a measly 4GB (which is the same as my phone).
 echo "pgstart" > ~/.shortcuts/dbup.sh
 echo "redisstart" >> ~/.shortcuts/dbup.sh
 echo "miniostart" >> ~/.shortcuts/dbup.sh
+echo "codeserverstart" >> ~/.shortcuts/dbup.sh
 chmod a+x ~/.shortcuts/dbup.sh
-echo "killall postgresql" > ~/.shortcuts/dbdown.sh
-echo "killall redis" >> ~/.shortcuts/dbdown.sh
-echo "killall minio" >> ~/.shortcuts/dbdown.sh
+echo "pgstop" > ~/.shortcuts/dbdown.sh
+echo "redisstop" >> ~/.shortcuts/dbdown.sh
+echo "miniostop" >> ~/.shortcuts/dbdown.sh
+echo "codeserverstop" >> ~/.shortcuts/dbdown.sh
 chmod a+x ~/.shortcuts/dbdown.sh
 ```
 
