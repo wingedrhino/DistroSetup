@@ -70,6 +70,7 @@ sudo dnf install \
   moby-engine \
   moby-engine-zsh-completion \
   docker-compose \
+  doctl \
   kernel-headers \
   "@C Development Tools and Libraries" \
   "@Development Tools" \

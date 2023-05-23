@@ -61,6 +61,7 @@ python-kivy
 cython
 ansible
 docker
+doctl
 redis
 minio
 minio-client
