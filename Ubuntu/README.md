@@ -105,3 +105,7 @@ uid                 Ubuntu CD Image Automatic Signing Key (2012) cdimage@ubuntu.
 gpg --keyid-format long --verify SHA256SUMS.gpg SHA256SUMS
 ```
 
+## TODO: Replace apt-key
+
+https://www.linuxuprising.com/2021/01/apt-key-is-deprecated-how-to-add.html
+
