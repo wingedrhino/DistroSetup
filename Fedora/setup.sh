@@ -193,9 +193,6 @@ sudo snap install node --classic --channel=18
 echo "Install Redis Desktop Manager via Snap"
 sudo snap install redis-desktop-manager
 
-echo "Install Insomnia via Snap"
-sudo snap install insomnia
-
 echo "Enable FlatHub Repo"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
