@@ -68,6 +68,8 @@ sudo dnf install \
   "@Development Tools" \
   "@Python Classroom" \
   "@Python Science" \
+  rust \
+  cargo \
   nodejs \
   yarnpkg \
   java-11-openjdk \
