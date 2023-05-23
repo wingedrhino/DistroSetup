@@ -120,11 +120,11 @@ sudo dnf install \
   telegram-desktop \
   hexchat \
   deluge \
-  chromium \
   gparted \
   gnome-disk-utility \
   keepassxc \
   electrum \
+  firefox \
   brave-browser \
   code \
   neovim-qt \
