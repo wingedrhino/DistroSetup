@@ -38,6 +38,9 @@ PATH="$HOME/.yarn/bin:$PATH"
 # Rust Setup
 PATH="$HOME/.cargo/bin:$PATH"
 
+# Node.js Setup
+PATH="$PATH:/usr/local/nodejs/bin"
+
 # Golang Setup
 PATH="$HOME/go/bin:$PATH"
 PATH="$PATH:/usr/local/go/bin"
