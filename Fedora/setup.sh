@@ -119,6 +119,7 @@ sudo dnf install \
   mencoder \
   ImageMagick \
   akmod-v4l2loopback \
+  stellarium \
   obs-studio \
   HandBrake-gui \
   olive \
