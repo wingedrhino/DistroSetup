@@ -5,12 +5,12 @@ echo "This sets up the machine for use as a headless development server"
 
 if ! grep -qe "fastestmirror=1" "/etc/dnf/dnf.conf"; then
   echo "Add fastestmirror=1 to /etc/dnf/dnf.conf"
-  echo 'fastestmirror=1' >> /etc/dnf/dnf.conf
+  sudo su -c "echo 'fastestmirror=1' >> /etc/dnf/dnf.conf"
 fi
 
 if ! grep -qe "keepcache=1" "/etc/dnf/dnf.conf"; then
   echo "Add keepcache=1 to /etc/dnf/dnf.conf"
-  echo 'keepcache=1' >> /etc/dnf/dnf.conf
+  sudo su -c "echo 'keepcache=1' >> /etc/dnf/dnf.conf"
 fi
 
 
@@ -113,7 +113,7 @@ sudo dnf install \
   -y
 
 echo "Install Groups of software"
-dnf group install --with-optional \
+sudo dnf group install --with-optional \
   "Development Tools" \
   "C Development Tools and Libraries" \
   "Python Classroom" \
@@ -124,7 +124,7 @@ dnf group install --with-optional \
   -y
 
 echo "Run dnf Autoremove"
-dnf autoremove -y
+sudo dnf autoremove -y
 
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
