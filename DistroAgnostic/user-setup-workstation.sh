@@ -7,7 +7,7 @@ sudo gpasswd -a $USER realtime
 sudo gpasswd -a $USER docker
 sudo gpasswd -a $USER uucp
 sudo gpasswd -a $USER adbusers
+sudo gpasswd -a $USER bumblebee
 
-balooctl stop
-balooctl disable
-
+echo "Enable Bumblebee"
+sudo systemctl enable bumblebee
