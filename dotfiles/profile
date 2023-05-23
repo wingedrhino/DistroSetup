@@ -40,6 +40,7 @@ PATH="$HOME/.cargo/bin:$PATH"
 
 # Golang Setup
 PATH="$HOME/go/bin:$PATH"
+PATH="$PATH:/usr/local/go/bin"
 
 # Setup Pipx's Path
 PATH="$PATH:$HOME/.local/bin"
