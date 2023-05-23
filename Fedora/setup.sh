@@ -59,6 +59,7 @@ sudo dnf install \
   simple-mtpfs \
   fuse-exfat \
   gvfs-fuse \
+  android-tools \
   git-all \
   nginx \
   bind \
