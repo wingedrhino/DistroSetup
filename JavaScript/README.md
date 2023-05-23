@@ -10,14 +10,8 @@
 * All written code should be easy to refactor through the `refactor->rename`
   option within VS Code.
 * Do not repeat yourself.
-* Use pnpm with Node.js
-
-## Setup Node.js
-
-```bash
-corepack enable --install-directory=~/.local/bin
-corepack prepare pnpm@latest --activate
-mkdir -p ~/.local/pnpm-store
-pnpm config set store-dir ~/.local/pnpm-store
-```
+* Use pnpm with Node.js; and stick to pure ECMAScript Modules. Explicitly
+  disallow support for CommonJS and any alternative module loaders.
+* Migrate to Deno when Deno's JSX compiler can be told to produce JSX for
+  non-React platforms, like [Solid.js](https://www.solidjs.com/).
 
