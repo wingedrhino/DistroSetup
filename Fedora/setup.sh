@@ -117,7 +117,6 @@ sudo dnf install \
   gnome-shell-extension-sound-output-device-chooser \
   gnome-shell-extension-system-monitor-applet \
   gnome-shell-extension-workspace-indicator \
-  telegram-desktop \
   hexchat \
   deluge \
   gparted \
@@ -211,13 +210,15 @@ echo "Install Redis Desktop Manager via Snap"
 sudo snap install redis-desktop-manager
 
 echo "Enable FlatHub Repo"
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-echo "Install Signal Messenger via FlatHub"
-flatpak install flathub org.signal.Signal
+echo "Install Signal & Telegram via FlatHub"
+sudo flatpak install flathub org.signal.Signal org.telegram.Desktop
 
 echo "Install mattjakeman Extension Manager via FlatHub"
-flatpak install flathub com.mattjakeman.ExtensionManager
+sudo flatpak install flathub com.mattjakeman.ExtensionManager
+
+
 
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
