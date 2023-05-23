@@ -206,7 +206,14 @@ flatpak install flathub com.mattjakeman.ExtensionManager
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
 sudo systemctl enable --now docker
+
 echo "Add User to New Groups"
 sudo usermod -aG audio $USER
 sudo usermod -aG docker $USER
 
+echo "Final System Updates - these are NOT unattended!"
+sudo snap refresh
+sudo flatpak update
+sudo dnf update
+
+echo "Done!"
