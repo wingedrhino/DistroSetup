@@ -5,6 +5,38 @@ currently in the very early stages of automating its setup, so that I can run
 it on a bunch of old Android phones and treat them like tiny low powered
 servers.
 
+## Initial Install
+
+Due to a problem that should be resolved by the time Termux hits v1.0, you need
+to install Termux through [F-Droid](https://f-droid.org/) instead of Google Play
+Store.
+
+So head over to F-Droid, download its APK, install it (you might need to say yes
+when asked if you'd like to install an app from an unknown source), open it,
+pull down, and wait for the package list to refresh.
+
+Type `termux` in the searchbar.
+
+Install the following packages:
+
+* Termux
+  * Bare minimum; you'd need this to run Linux apps
+* Termux:Widget
+  * Allows you to launch scripts placed inside `~/.shortcuts` from the Android
+    homescreen. VERY nifty!
+* Termux:API
+  * Exposes phone's features through CLI APIs in the terminal, accessible via
+    shell scripts.
+* Termux:Float
+  * Not super useful; this lets you place termux inside a floating window.
+    You'd probably appreciate this more in a tablet than on a phone.
+* Termux:Boot
+  * Allows termux to startup at boot.
+* Termux:Styling
+  * Extra themes for Termux.
+
+Launch Termux.
+
 ## Static IP
 
 Make sure your household WiFi router's DHCP server assigns the same IP to the
