@@ -231,10 +231,10 @@ Unlike PostgreSQL, Redis is a lot more fuss-free.
 ```bash
 cd $HOME
 wget https://raw.githubusercontent.com/redis/redis/6.0/redis.conf
-echo 'redis-server ~/redis.conf' > ~/bin/startredis
-chmod a+x ~/bin/startredis
-echo 'killall redis-server' > ~/bin/stopredis
-chmod a+x ~/bin/stopredis
+echo 'redis-server ~/redis.conf' > ~/bin/redisstart
+chmod a+x ~/bin/redisstart
+echo 'killall redis-server' > ~/bin/redisstop
+chmod a+x ~/bin/redisstop
 vim  ~/redis.conf
 ```
 
@@ -274,12 +274,16 @@ huge battery life. But the RAM is a measly 4GB (which is the same as my phone).
 
 ```bash
 echo "pgstart" > ~/.shortcuts/dbup.sh
-echo "startredis" >> ~/.shortcuts/dbup.sh
+echo "redisstart" >> ~/.shortcuts/dbup.sh
 echo "miniostart" >> ~/.shortcuts/dbup.sh
 chmod a+x ~/.shortcuts/dbup.sh
+echo "killall postgresql" > ~/.shortcuts/dbdown.sh
+echo "killall redis" >> ~/.shortcuts/dbdown.sh
+echo "killall minio" >> ~/.shortcuts/dbdown.sh
+chmod a+x ~/.shortcuts/dbdown.sh
 ```
 
-Now your databases can all be launched from the termux widget!
+Now your databases can all be started/stopped from the termux widget!
 
 ## Configuring Databases for Remote Access
 
