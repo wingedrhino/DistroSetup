@@ -188,13 +188,13 @@ fi
 echo "Setting up MongoDB Compass"
 if ! which mongodb-compass; then
   echo "Installing MongoDB Compass"
-  sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.29.5.x86_64.rpm
+  sudo dnf install https://downloads.mongodb.com/compass/mongodb-compass-1.31.2.x86_64.rpm
 fi
 
 echo "Setting up Insomnia REST"
 if ! which insomnia; then
   echo "Installing Insomnia REST"
-  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402021.7.2/Insomnia.Core-2021.7.2.rpm
+  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402022.3.0/Insomnia.Core-2022.3.0.rpm
 fi
 
 echo "Install PostgreSQL 14.x"
