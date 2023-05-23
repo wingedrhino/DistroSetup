@@ -327,9 +327,14 @@ cd ~/.config/yarn/global/node_modules/code-server
 ln -s $PREFIX/bin/rg ./lib/vscode/node_modules/vscode-ripgrep/bin/rg
 echo 'nohup code-server &' > ~/bin/codeserverstart
 chmod a+x ~/bin/codeserverstart
-echo 'killall code-server' > ~/bin/codeserverstop
+echo 'killall node' > ~/bin/codeserverstop
 chmod a+x ~/bin/codeserverstop
 ```
+
+### Code Server Kill Script FIXME WARNING:
+
+Note that I currently kill ALL node processes to stop code server. I'll figure
+out a better way later!
 
 ## Running Minio (an S3 clone)
 
