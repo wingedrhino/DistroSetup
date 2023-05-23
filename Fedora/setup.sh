@@ -48,6 +48,7 @@ sudo dnf install \
   rclone \
   iperf3 \
   tilix \
+  tilix-nautilus \
   nmap \
   iotop \
   htop \
