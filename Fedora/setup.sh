@@ -196,6 +196,9 @@ sudo ln -s /var/lib/snapd/snap /snap
 echo "Install Heroku CLI via Snap"
 sudo snap install heroku --classic
 
+echo "Install Node.js via Snap"
+sudo snap install node --classic --channel=18
+
 echo "Install Redis Desktop Manager via Snap"
 sudo snap install redis-desktop-manager
 
