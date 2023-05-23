@@ -182,20 +182,11 @@ fi
 echo "Install PostgreSQL 14.x"
 sudo dnf module install postgresql:14/server
 
-echo "Enable Snap Classic"
-sudo ln -s /var/lib/snapd/snap /snap
-
-echo "Install Heroku CLI via Snap"
-sudo snap install heroku --classic
-
-echo "Install Node.js via Snap"
-sudo snap install node --classic --channel=18
-
-echo "Install Redis Desktop Manager via Snap"
-sudo snap install redis-desktop-manager
-
 echo "Enable FlatHub Repo"
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+echo "Install Redis Desktop Manager via Flatpak"
+sudo flatpak install flathub app.resp.RESP
 
 echo "Install Signal via FlatHub"
 sudo flatpak install flathub org.signal.Signal
@@ -209,7 +200,6 @@ sudo usermod -aG audio $USER
 sudo usermod -aG docker $USER
 
 echo "Final System Updates - these are NOT unattended!"
-sudo snap refresh
 sudo flatpak update
 sudo dnf update
 
