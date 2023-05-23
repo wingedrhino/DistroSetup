@@ -216,3 +216,28 @@ https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md
 TODO: I am creating a bunch of scripts to automate some of the actions involved
 in turning the Pi into a Hotspot / shared connection tool.
 
+## Using the Pi as a WiFi Bridge
+
+Read https://www.maketecheasier.com/turn-raspberry-pi-into-wi-fi-bridge/
+
+I have a HP Chromebook MT8183 (4GB RAM, 64GB eMMC) which is a bit too weak for
+use standalone as a developer workstation. It DOES have a USB Type-C port though
+which provides more than enough power to my Raspberry Pi (Type-C ports can
+supply a steady 5V 3A). Thus, a natural setup was to combine my Raspberry Pi 4B
+8GB (with a 128GB Western Digital Purple MicroSD Card inside) with the
+Chromebook by conecting the Pi over the Type-C port and using the Chromebook as
+a frontend for the headless Pi.
+
+ChromeOS has a few quirks (which I shall detail in my blog later) and one of
+them is that it can only connect to one network at a time. This means that if I
+connected the Pi over USB (and used networking via `g_ether`), I would _only_ be
+able to access internet _through_ the Pi.
+
+This means the Pi would need to connect to WiFi and route/bridge that connection
+to `usb0`. Follow the steps in the article I linked to achieve that!
+
+This gives you a USB 2.0 speed connection between the Pi and the Chromebook.
+Anything slower would make something like a VNC extremely laggy. Chromebooks
+don't have ethernet ports either so you don't want to carry around a dongle to
+connect yours to your Pi.
+
