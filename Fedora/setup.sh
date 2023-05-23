@@ -150,6 +150,12 @@ sudo dnf install \
   krita \
   darktable \
   "@Audio Production" \
+  helvum \
+  easyeffects \
+  lv2-setBfree-plugins \
+  lv2-calf-plugins-gui \
+  Carla \
+  hydrogen \
   libreoffice \
   calibre \
   "@Authoring and Publishing" \
