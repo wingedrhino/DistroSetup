@@ -358,15 +358,15 @@ blackouts, and the Chromebook is the only device (other than the phone) with a
 huge battery life. But the RAM is a measly 4GB (which is the same as my phone).
 
 ```bash
-echo "pgstart" > ~/.shortcuts/dbup.sh
-echo "redisstart" >> ~/.shortcuts/dbup.sh
-echo "miniostart" >> ~/.shortcuts/dbup.sh
-echo "codeserverstart" >> ~/.shortcuts/dbup.sh
+echo "~/bin/pgstart" > ~/.shortcuts/dbup.sh
+echo "~/bin/redisstart" >> ~/.shortcuts/dbup.sh
+echo "~/bin/miniostart" >> ~/.shortcuts/dbup.sh
+echo "~/bin/codeserverstart" >> ~/.shortcuts/dbup.sh
 chmod a+x ~/.shortcuts/dbup.sh
-echo "pgstop" > ~/.shortcuts/dbdown.sh
-echo "redisstop" >> ~/.shortcuts/dbdown.sh
-echo "miniostop" >> ~/.shortcuts/dbdown.sh
-echo "codeserverstop" >> ~/.shortcuts/dbdown.sh
+echo "~/bin/pgstop" > ~/.shortcuts/dbdown.sh
+echo "~/bin/redisstop" >> ~/.shortcuts/dbdown.sh
+echo "~/bin/miniostop" >> ~/.shortcuts/dbdown.sh
+echo "~/bin/codeserverstop" >> ~/.shortcuts/dbdown.sh
 chmod a+x ~/.shortcuts/dbdown.sh
 ```
 
