@@ -70,7 +70,6 @@ sudo dnf install \
   "@Python Science" \
   rust \
   cargo \
-  nodejs \
   yarnpkg \
   java-11-openjdk \
   java-11-openjdk-devel \
@@ -129,6 +128,9 @@ sudo dnf install \
 
 echo "Run dnf Autoremove"
 sudo dnf autoremove
+
+echo "Install Node.js 16.x"
+sudo dnf module install nodejs:16/default
 
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
