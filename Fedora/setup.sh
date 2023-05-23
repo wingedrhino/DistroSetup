@@ -74,6 +74,8 @@ sudo dnf install \
   go \
   php \
   composer \
+  vala \
+  vala-doc \
   "@Security Lab" \
   "@Authoring and Publishing" \
   "@Audio Production" \
@@ -116,7 +118,7 @@ sudo dnf install \
   google-roboto-slab-fonts \
   comic-neue-fonts \
   comic-neue-angular-fonts \
-  --with-optional
+  --setopt=group_package_types="mandatory,default,optional"
 
 echo "Run dnf Autoremove"
 sudo dnf autoremove
