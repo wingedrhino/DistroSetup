@@ -97,6 +97,7 @@ sudo dnf install \
   composer \
   redis \
   pgadmin4 \
+  pgcli \
   vala \
   vala-doc \
   "@Security Lab" \
