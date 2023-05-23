@@ -1,7 +1,6 @@
 # Raspberry Pi Setup
 
-I own a Pi Zero W and a Pi Zero WH, as well as a Pi 4 Model B 4GB. They all run
-Debian Buster. Here's how I set things up.
+I own a Pi Zero and a few Pi Zero WH's.
 
 
 ## Install
@@ -20,12 +19,15 @@ access: https://downloads.raspberrypi.org/raspbian_lite_latest.torrent
 Follow the official install instructions here:
 https://www.raspberrypi.org/documentation/installation/installing-images/linux.md
 
-For those who know how to be smart about copy-pasting commands, here's the
-relevant command to burn a `.img` file to your MicroSD card:
+Extract the image (I shall update my script later to work with compressed
+images) via the `etch.pl` command within this repository.
 
 ```bash
-sudo dd bs=4M if=2019-09-26-raspbian-buster-lite.img of=/dev/mmcblk0 status=progress conv=fsync
+etch.pl 2019-09-26-raspbian-buster-lite.img /dev/mmcblk0
 ```
+
+If the file name or the location to write to is incorrect, the script will warn
+you and error out.
 
 ## Resizing the Root Partition
 
@@ -103,45 +105,57 @@ emulate a keyboard, mouse, ethernet port, MIDI device, etc.
     * hit edit connections
     * edit the new connection
     * switch to ipv4 tab
-    * change the method to "Link-Local"
-    * save and close
+    * change the method to "shared to other computers"
+    * repeat for ipv6, save, and close
 7. Disconnect and reconnect this network
-8. You can now run `ssh pi@raspberrypi.local` to access the Pi.
-9. Make a bridge connection between the Pi and your WiFi to give it internet
-   access.
+8. You can now run `ssh pi@10.42.0.whatever` to access the Pi.
+   Scroll down for instructions on how to fetch its IP Address!
 
-TODO: elaborate on bridge network
+## Determine IP Address of Raspberry Pi
 
-### Reference Links
+This step applies to Raspberry Pi devices connected via USB Gadget Mode, and
+also Raspberry Pi devices connected via Ethernet cable directly to your laptop.
 
-* https://blog.gbaman.info/?p=791
-* https://blog.gbaman.info/?p=699
+Both these have one thing in common - you need to determine their IP Address.
+
+First, run `ip route` to know what network the new interface is on. The native
+ethernet port should be `eno1`, a PCI ethernet card would be `ens1`, and you'd
+have a long ugly name for the USB ethernet interface that I cannot be bothered
+to remember and type here.
+
+You'd see a network that looks like this: `10.42.0.0/24`.
+
+Run nmap on it: `sudo nmap -sP 10.42.0.0/24` and wait for the command to finish
+executing.
+
+You'd see a couple of devices on the network now. The one with the ip address
+that ends with 1 (like 10.42.0.1) is your host laptop. The "other" one is the
+Raspberry Pi.
+
+This IP Address can be random, so you'd need to do this each time you try to
+connect to a Pi.
+
+I should _probably_ try automating these steps at some point!
+
+This solution also works if you are running your Pi off a mobile phone hotspot.
+Your laptop and phone would need to be on the same hotspot for this to work.
+The IP address of your laptop is easy to learn, the IP address of your phone
+would be whatever default gateway gets configured in the hotspot, and then the
+third entry would be the Raspberry Pi.
+
+Note that due to changes in Android 10 (which you can google), hotspots have
+randomized IP addresses and randomized gateway addresses. So you can't get
+any of these values to be predictable.
+
+If you want a simpler way out, automate this shit in Python! Pretty sure there
+are wrappers around ip link, ip route, and nmap in Python.
+
+
+## Reference Links for OTG Gadget Mode
+
+* https://forums.raspberrypi.com/viewtopic.php?t=245810
 * https://e2e.ti.com/support/processors/f/791/t/612303?Linux-AM5728-USB-OTG-network-works-intermittently
 
-## Sharing ethernet from laptop via NetworkManager
-
-If you use NetworkManager to share your ethernet connection via a cable, the
-allocated IP address seems to be consistent each time the Pi reconnects. I'm yet
-to check why this is but there's probably some hardcoded values in play here.
-
-To check that IP, do an `ifconfig` and determine your IP address on the
-appropriate ethernet interface after you've activated the connection. It's
-usually something like `10.42.0.1`.
-
-Then make sure the package `nmap` is installed and run `nmap -sn 10.42.0.0/24`
-to see what other machines in the network are reachable.
-
-The only machine other than `10.42.0.1` is the Raspberry Pi. Add this to your
-laptop's `/etc/hosts` for quick access, via a one-line entry like this:
-
-```
-rpi3b 10.42.0.216
-```
-
-Now you can do a simple `ssh rpi3b` to access the machine.
-
-If like mine, your laptop comes without an ethernet port, look for a cheap USB
-adapter on Amazon. I have this one: https://www.amazon.in/gp/product/B0752TG1WC/
 
 ## Using the Pi as a hotspot
 
