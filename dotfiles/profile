@@ -70,6 +70,7 @@ alias d=docker
 alias dc=docker-compose
 alias b='buffalo'
 alias g='git'
+alias anaconda3='eval "$(~/.local/apps/anaconda3/bin/conda shell.zsh hook)"'
 
 #
 # If a .profile.local exists, source it
