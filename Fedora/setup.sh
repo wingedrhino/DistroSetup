@@ -64,6 +64,7 @@ sudo dnf install \
   rpi-imager \
   arm-image-installer \
   git-all \
+  git-lfs \
   nginx \
   bind \
   traceroute \
