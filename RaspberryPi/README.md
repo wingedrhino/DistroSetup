@@ -155,6 +155,43 @@ are wrappers around ip link, ip route, and nmap in Python.
 * https://e2e.ti.com/support/processors/f/791/t/612303?Linux-AM5728-USB-OTG-network-works-intermittently
 
 
+## Compiling Kernel Modules on the Pi Zero (W(H))
+
+When you compile a kernel module for the Raspberry Pi, you need to install the
+kernel headers.
+
+For this, you'd typically do
+
+```
+sudo apt install raspberrypi-kernel-headers
+```
+
+On literally any modern Raspberry Pi which supports the ARMv8 instruction set -
+and you'd be an idiot to not buy one that does, you don't need to do anything
+else.
+
+That covers the Pi 3A+, the Pi 4B, and the Pi Zero 2W.
+
+But, if you're unfortunate enough to own an older Pi, a Pi Zero (W(H)), or if
+you absolutely NEED to write software for the Zero because you read
+https://picockpit.com/raspberry-pi/everything-about-raspberry-pi-zero-2-w/
+and decided that you want the lower peak power usage of the Zero (again, you
+should probably just design for the Zero 2 and then underclock it and/or shut
+off its radio), then you need to run this before you can compile software for
+it.
+
+```
+sudo ln -s /usr/src/linux-headers-$(uname -r)/arch/arm /usr/src/linux-headers-$(uname -r)/arch/armv6l
+```
+
+Why is that? because `/usr/src/linux-headers-versiongoeshere/arch/arm64` exists
+but `/usr/src/linux-headers-versiongoeshere/arch/armv6l` does not, and instead
+there is a solitary `/usr/src/linux-headers-versiongoeshere/arch/arm` for both
+armv6l and the Raspberry Pi 2's ARMv7.
+
+You'd need to run this command EVERY SINGLE TIME your kernel updates and you
+need to build a fresh module for it.
+
 ## Using the Pi as a hotspot
 
 TODO: WIP
