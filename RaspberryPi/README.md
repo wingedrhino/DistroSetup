@@ -192,6 +192,21 @@ armv6l and the Raspberry Pi 2's ARMv7.
 You'd need to run this command EVERY SINGLE TIME your kernel updates and you
 need to build a fresh module for it.
 
+## Setting up an RTL8188FTV based USB WiFi Dongle
+
+If you are looking to buy an RTL8188-series WiFi Dongle, please spend the extra
+money and get something which works out of the box with Linux.
+
+But if you're stuck with one - these are super common unbranded dongles you can
+buy for as little as 2$ on Amazon.in, you need to install a binary blob of a
+driver that cannot - and will not ever - be shipped with the Linux kernel.
+
+Head over to https://github.com/kelebek333/rtl8188fu and follow the
+instructions.
+
+If you are on a Pi Zero (W(H)), look at the previous section to save yourself
+some headache.
+
 ## Using the Pi as a hotspot
 
 TODO: WIP
@@ -200,3 +215,4 @@ https://www.raspberrypi.org/documentation/configuration/wireless/access-point.md
 
 TODO: I am creating a bunch of scripts to automate some of the actions involved
 in turning the Pi into a Hotspot / shared connection tool.
+
