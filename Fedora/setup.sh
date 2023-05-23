@@ -17,12 +17,11 @@ fi
 echo "Enable RPM Fusion Repos"
 sudo dnf install \
   https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm \
-  -y
+  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 echo "Enable Brave Repos"
-sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/ -y
-sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc -y
+sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
+sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc 
 
 echo "Enable VS Code Repos"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
@@ -109,11 +108,10 @@ sudo dnf install \
   google-roboto-mono-fonts \
   google-roboto-slab-fonts \
   comic-neue-fonts \
-  comic-neue-angular-fonts \
-  -y
+  comic-neue-angular-fonts
 
 echo "Install Groups of software"
-sudo dnf group install --with-optional \
+sudo dnf group install \
   "Development Tools" \
   "C Development Tools and Libraries" \
   "Python Classroom" \
@@ -121,10 +119,10 @@ sudo dnf group install --with-optional \
   "Security Lab" \
   "Audio Production" \
   "Authoring and Publishing" \
-  -y
+  --with-optional
 
 echo "Run dnf Autoremove"
-sudo dnf autoremove -y
+sudo dnf autoremove
 
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
