@@ -162,7 +162,7 @@ if ($enable_developer) {
     apt_add_key('https://insomnia.rest/keys/debian-public.key.asc');
     apt_add_repo_file(
         'insomnia',
-        'deb [arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all',
+        'deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all',
     );
 
     print "Enable VSCode Repo\n";
