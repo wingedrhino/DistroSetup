@@ -29,7 +29,7 @@ sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.m
 
 echo "Install New Software"
 sudo dnf install \
-  NetworkManager-tui \ # CLI Tools
+  NetworkManager-tui \
   util-linux-user \
   fail2ban \
   mosh \
@@ -61,6 +61,10 @@ sudo dnf install \
   moby-engine-zsh-completion \
   docker-compose \
   kernel-headers \
+  "@C Development Tools and Libraries" \
+  "@Development Tools" \
+  "@Python Classroom" \
+  "@Python Science" \
   nodejs \
   yarnpkg \
   java-11-openjdk \
@@ -70,10 +74,13 @@ sudo dnf install \
   go \
   php \
   composer \
+  "@Security Lab" \
+  "@Authoring and Publishing" \
+  "@Audio Production" \
   ffmpeg \
   mencoder \
   ImageMagick \
-  keepassx \ # Graphical Tools
+  keepassx \
   brave-browser \
   code \
   meld \
@@ -108,17 +115,7 @@ sudo dnf install \
   google-roboto-mono-fonts \
   google-roboto-slab-fonts \
   comic-neue-fonts \
-  comic-neue-angular-fonts
-
-echo "Install Groups of software"
-sudo dnf group install \
-  "Development Tools" \
-  "C Development Tools and Libraries" \
-  "Python Classroom" \
-  "Python Science" \
-  "Security Lab" \
-  "Audio Production" \
-  "Authoring and Publishing" \
+  comic-neue-angular-fonts \
   --with-optional
 
 echo "Run dnf Autoremove"
@@ -128,5 +125,5 @@ echo "Enable & Start Services"
 sudo systemctl enable --now sshd
 # sudo systemclt enable --now docker
 echo "Add User to New Groups"
-sudo usermod -aG jackuser $USER                                                 
-sudo usermod -aG audio $USER   
+sudo usermod -aG audio $USER
+
