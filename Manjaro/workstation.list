@@ -106,4 +106,4 @@ v4l2loopback-dkms
 pavucontrol
 python-pyusb
 python-gobject
-
+cpu-x
