@@ -95,6 +95,7 @@ tar
 ripgrep
 fail2ban
 openssh
+smartmontools
 rclone
 s3cmd
 whois

@@ -46,6 +46,7 @@ sudo dnf install \
   byobu \
   levien-inconsolata-fonts \
   parallel \
+  smartmontools \
   rclone \
   s3cmd \
   iperf3 \

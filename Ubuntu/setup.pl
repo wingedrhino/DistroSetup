@@ -219,6 +219,7 @@ my @list_server = (
     'zbar-tools',
     'ffmpeg',
     'imagemagick',
+    'smartmontools',
     'rclone',
     's3cmd',
     'mosh',
