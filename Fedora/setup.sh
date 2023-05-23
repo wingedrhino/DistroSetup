@@ -135,6 +135,7 @@ sudo dnf install \
   krita \
   darktable \
   "@Audio Production" \
+  ardour7 \
   helvum \
   easyeffects \
   lv2-setBfree-plugins \
@@ -161,6 +162,7 @@ sudo dnf install \
   comic-neue-fonts \
   comic-neue-angular-fonts \
   --setopt=group_package_types="mandatory,default,optional"
+  --exclude=ardour6
 
 echo "Run dnf Autoremove"
 sudo dnf autoremove
