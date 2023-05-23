@@ -82,6 +82,7 @@ sudo dnf install \
   nodejs \
   php \
   composer \
+  redis \
   postgresql14-server \
   pgadmin4 \
   vala \
@@ -136,6 +137,13 @@ sudo dnf install \
 
 echo "Run dnf Autoremove"
 sudo dnf autoremove
+
+echo "Setting up Minio"
+if ! which minio; then
+  echo "Installing Minio"
+  sudo dnf install https://dl.min.io/server/minio/release/linux-amd64/minio-20211124231933.0.0.x86_64.rpm
+  sudo dnf install https://dl.min.io/client/mc/release/linux-amd64/mcli-20211116203736.0.0.x86_64.rpm
+fi
 
 echo "Setting up MongoDB Compass"
 if ! which mongodb-compass; then
