@@ -103,6 +103,7 @@ sudo dnf install \
   ffmpeg \
   mencoder \
   ImageMagick \
+  akmod-v4l2loopback \
   obs-studio \
   HandBrake-gui \
   olive \
