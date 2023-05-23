@@ -115,7 +115,13 @@ wine
 wine-mono
 wine-gecko
 playonlinux
-jack2
+manjaro-pipewire
+easyeffects
+pipewire
+pipewire-docs
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
 realtime
 pro-audio
 lv2-plugins
@@ -133,3 +139,8 @@ vocal
 obs-studio
 v4l-utils
 v4l2loopback-dkms
+pavucontrol
+pavucontrol-qt
+python-pyusb
+python-gobject
+
