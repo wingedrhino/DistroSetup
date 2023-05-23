@@ -200,15 +200,15 @@ on your home screen, with shortcuts to executable files located in
 Try this:
 
 ```bash
-mkdir -p ~/.shortcuts
-echo "sshd" >> ~/.shortcuts/sshd && chmod a+x ~/.shortcuts/sshd
+echo "sshd" >> ~/bin/sshd && chmod a+x ~/bin/sshd
+ln -s ~/bin ~/.shortcuts
 ```
 
 It'll let you start sshd on Termux from your Android home screen.
 
-I also setup widgets to auto-launch PostgreSQL, Redis, Minio, etc for when I
-need to use my Android phone as an external server while I program from my
-rather resource-constrained Chromebook!
+Note how I didn't create an actual `~/.shortcuts` folder but instead symlinked
+it to `~/bin`. This is because under _standard_ UNIX-ish systems, the `~/bin`
+folder is the one that'd contain commandline shortcuts at a user-level.
 
 ## Android Debugger based Port Forwarding
 
@@ -325,7 +325,7 @@ VS Code within Termux. Awesome, eh? These guys actually have dedicated
 yarn global add code-server
 cd ~/.config/yarn/global/node_modules/code-server
 ln -s $PREFIX/bin/rg ./lib/vscode/node_modules/vscode-ripgrep/bin/rg
-echo 'nohup code-server &' > ~/bin/codeserverstart
+echo 'nohup $PREFIX/bin/code-server &' > ~/bin/codeserverstart
 chmod a+x ~/bin/codeserverstart
 echo 'killall node' > ~/bin/codeserverstop
 chmod a+x ~/bin/codeserverstop
@@ -362,20 +362,14 @@ I sometimes have to use my Chromebook to write software because I have frequent
 blackouts, and the Chromebook is the only device (other than the phone) with a
 huge battery life. But the RAM is a measly 4GB (which is the same as my phone).
 
-```bash
-echo "~/bin/pgstart" > ~/.shortcuts/dbup.sh
-echo "~/bin/redisstart" >> ~/.shortcuts/dbup.sh
-echo "~/bin/miniostart" >> ~/.shortcuts/dbup.sh
-echo "~/bin/codeserverstart" >> ~/.shortcuts/dbup.sh
-chmod a+x ~/.shortcuts/dbup.sh
-echo "~/bin/pgstop" > ~/.shortcuts/dbdown.sh
-echo "~/bin/redisstop" >> ~/.shortcuts/dbdown.sh
-echo "~/bin/miniostop" >> ~/.shortcuts/dbdown.sh
-echo "~/bin/codeserverstop" >> ~/.shortcuts/dbdown.sh
-chmod a+x ~/.shortcuts/dbdown.sh
-```
+Note how we created a whole bunch of shortcuts in `~/bin` and also symbolically
+linked it to `~/.shortcuts` so `Termux:Widget` might find them. If you refresh
+your termux widget, you'd see ALL the shortcuts you created so far appear here!
 
-Now your databases can all be started/stopped from the termux widget!
+Now your databases can all be started/stopped from the termux widget.
+
+The widgets aren't _always_ reliable though. So you're still better off running
+the programs individually after opening a byobu session in Termux.
 
 ## Configuring Databases for Remote Access
 
