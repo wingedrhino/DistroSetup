@@ -20,5 +20,17 @@ echo "Create essential directories"
 mkdir -p $HOME/ext/bin $HOME/ext/workspace $HOME/ext/vault $HOME/ext/appdata $HOME/bin $HOME/go
 
 echo "Change shell from $SHELL to zsh"
-chsh -s zsh
+chsh -s /usr/bin/zsh
+
+echo "Add user to various groups"
+sudo gpasswd -a $USER vboxusers
+sudo gpasswd -a $USER audio
+sudo gpasswd -a $USER realtime
+sudo gpasswd -a $USER docker
+sudo gpasswd -a $USER uucp
+sudo gpasswd -a $USER adbusers
+sudo gpasswd -a $USER bumblebee
+
+echo "Enable bumblebee if installed, for nvidia power management"
+sudo systemctl enable bumblebee
 
