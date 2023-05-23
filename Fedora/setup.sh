@@ -27,6 +27,7 @@ sudo dnf update --refresh
 
 echo "Install New Software"
 sudo dnf install \
+  rsync \
   NetworkManager-tui \
   protonvpn-cli \
   util-linux-user \
