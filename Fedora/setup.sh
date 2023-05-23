@@ -89,7 +89,7 @@ sudo dnf install \
   chromium \
   gparted \
   gnome-disk-utility \
-  keepassx \
+  keepassxc \
   brave-browser \
   code \
   meld \
