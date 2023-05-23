@@ -25,6 +25,9 @@ echo "Enable Brave Repos"
 sudo dnf config-manager --add-repo https://brave-browser-rpm-release.s3.brave.com/x86_64/
 sudo rpm --import https://brave-browser-rpm-release.s3.brave.com/brave-core.asc 
 
+echo "Enable NodeSource Node.js 17.x Repos"
+curl -sL https://rpm.nodesource.com/setup_17.x | sudo bash -
+
 echo "Enable VS Code Repos"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
@@ -161,11 +164,8 @@ fi
 echo "Setting up Insomnia REST"
 if ! which insomnia; then
   echo "Installing Insomnia REST"
-  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402021.6.0/Insomnia.Core-2021.7.2.rpm
+  sudo dnf install https://github.com/Kong/insomnia/releases/download/core%402021.7.2/Insomnia.Core-2021.7.2.rpm
 fi
-
-# echo "Install Node.js 17.x"
-# sudo dnf module install nodejs:17/default
 
 echo "Install PostgreSQL 14.x"
 sudo dnf module install postgresql:14/server
@@ -184,6 +184,9 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 echo "Install Signal Messenger via FlatHub"
 flatpak install flathub org.signal.Signal
+
+echo "Install mattjakeman Extension Manager via FlatHub"
+flatpak install flathub com.mattjakeman.ExtensionManager
 
 echo "Enable & Start Services"
 sudo systemctl enable --now sshd
