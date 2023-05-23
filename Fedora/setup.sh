@@ -114,6 +114,7 @@ sudo dnf install \
   hexchat \
   deluge \
   gparted \
+  f2fs-tools \
   gnome-disk-utility \
   keepassxc \
   electrum \
