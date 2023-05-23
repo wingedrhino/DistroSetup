@@ -17,8 +17,7 @@ cp ../dotfiles/gitconfig ~/.gitconfig
 echo "Create essential directories"
 mkdir -p $HOME/Documents/workspace $HOME/Documents/vault $HOME/Documents/appdata $HOME/bin $HOME/go
 
-echo "Change shell from $SHELL to zsh"
-chsh -s /usr/bin/zsh
+echo "If you want to change shell from $SHELL to zsh, run 'chsh -s /usr/bin/zsh'"
 
 echo "Add user to various groups"
 sudo gpasswd -a $USER vboxusers
