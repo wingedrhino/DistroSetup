@@ -220,6 +220,7 @@ my @list_server = (
     'ffmpeg',
     'imagemagick',
     'rclone',
+    's3cmd',
     'mosh',
     'sshfs',
     'whois',

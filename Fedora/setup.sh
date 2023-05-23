@@ -47,6 +47,7 @@ sudo dnf install \
   levien-inconsolata-fonts \
   parallel \
   rclone \
+  s3cmd \
   iperf3 \
   tilix \
   tilix-nautilus \

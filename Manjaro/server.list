@@ -96,6 +96,7 @@ ripgrep
 fail2ban
 openssh
 rclone
+s3cmd
 whois
 iperf3
 parallel
