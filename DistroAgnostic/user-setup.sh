@@ -4,7 +4,7 @@ echo "Preparing system for user $USER"
 echo "Run this command for all users (including root)!"
 
 echo "Setup Byobu\n"
-byobu-ctrl-a emacs
+byobu-ctrl-a screen
 echo "Install ~/.irbirc"
 cp ../dotfiles/irbrc ~/.irbrc
 echo "Install ~/.zshrc"
