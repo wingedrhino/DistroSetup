@@ -41,7 +41,6 @@ PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Mobile Dev Setup
 ANDROID_SDK_ROOT="$HOME/Android/Sdk"
-PATH="$HOME_BIN/flutter/bin:$PATH"
 PATH="/opt/depot_tools:$PATH"
 
 # Rust Setup
@@ -51,11 +50,9 @@ PATH="$HOME/.cargo/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
 PATH="$PATH:/usr/local/go/bin"
 
-# Setup Pipx's Path
-PATH="$PATH:$HOME/.local/bin"
-
 # Add local bin to path
 PATH="$LOCAL_BIN:$PATH"
+PATH="$HOME_BIN:$PATH"
 
 # Export $PATH and $MANPATH
 export PATH
