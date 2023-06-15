@@ -13,3 +13,6 @@ echo "Snap: IntelliJ"
 sudo snap install intellij-idea-community --classic
 echo "Snap: Redis Desktop Manager"
 sudo snap install redis-desktop-manager
+echo "Snap: Insomnia"
+sudo snap install insomnia
+

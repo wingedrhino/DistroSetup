@@ -181,7 +181,7 @@ if ($enable_developer) {
 
     apt_install_deb(
         'mongodb-compass-isolated',
-        'https://downloads.mongodb.com/compass/mongodb-compass-isolated_1.29.5_amd64.deb',
+        'https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.37.0.x86_64.rpm',
     );
 }
 
