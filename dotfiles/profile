@@ -20,18 +20,15 @@ PATH="$WORKSPACE_DIR/DistroSetup/DistroAgnostic:$PATH"
 #
 
 #
-## Node.js Setup w/ and w/o NVM.
+## Node.js Setup (w/o NVM)
+## Install fnm into ~/.local/bin and use it
+## without polluting the shell w/ functions
 #
-if [ -f $HOME/.nvm/nvm.sh ]; then
-  echo "Found ~/.nvm/nvm.sh. We'll load up NVM!"
-  source $HOME/.nvm/nvm.sh
-else
-  NPM_PACKAGES="${HOME}/.npm-packages"
-  PATH="$PATH:$NPM_PACKAGES/bin"
-  # Preserve MANPATH if you already defined it somewhere in your config.
-  # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
-  MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-fi
+NPM_PACKAGES="${HOME}/.npm-packages"
+PATH="$PATH:$NPM_PACKAGES/bin"
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 # Google Cloud Setup
 PATH="/opt/google-cloud-sdk/bin:$PATH"
