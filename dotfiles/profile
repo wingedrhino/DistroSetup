@@ -65,6 +65,8 @@ alias dc=docker-compose
 alias b='buffalo'
 alias g='git'
 alias anaconda3='eval "$(~/.local/apps/anaconda3/bin/conda shell.zsh hook)"'
+alias vpn='protonvpn-cli c --cc=NL -p udp'
+alias vpnd='protonvpn-cli disconnect'
 
 #
 # If a .profile.local exists, source it
