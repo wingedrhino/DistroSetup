@@ -13,17 +13,17 @@ if ! grep -qe "keepcache=1" "/etc/dnf/dnf.conf"; then
   sudo su -c "echo 'keepcache=1' >> /etc/dnf/dnf.conf"
 fi
 
-echo "Enable RPM Fusion Repos"
-sudo dnf install \
-  https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
-  https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+# echo "Enable RPM Fusion Repos"
+# sudo dnf install \
+#   https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
+#   https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 echo "Enable VS Code Repos"
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 
 echo "First system update"
-sudo dnf update --refresh
+sudo dnf update
 
 echo "Install New Software"
 sudo dnf install \
@@ -57,7 +57,6 @@ sudo dnf install \
   sshfs \
   gvfs-mtp \
   simple-mtpfs \
-  fuse-exfat \
   gvfs-fuse \
   android-tools \
   rpi-imager \
@@ -75,8 +74,6 @@ sudo dnf install \
   kernel-headers \
   "@C Development Tools and Libraries" \
   "@Development Tools" \
-  "@Python Classroom" \
-  "@Python Science" \
   pipx \
   python3-mypy \
   python3-mypy_extensions \
@@ -94,7 +91,6 @@ sudo dnf install \
   vala-doc \
   "@Security Lab" \
   gnome-tweaks \
-  nautilus-dropbox \
   nautilus-extensions \
   nautilus-gsconnect \
   gnome-shell-extension-gsconnect \
@@ -119,20 +115,10 @@ sudo dnf install \
   code \
   neovim-qt \
   meld \
-  vlc \
-  smplayer \
   qpdf \
   gthumb \
-  ffmpeg \
-  mencoder \
   ImageMagick \
-  akmod-v4l2loopback \
   stellarium \
-  obs-studio \
-  HandBrake-gui \
-  olive \
-  kdenlive \
-  shotcut \
   gimp \
   inkscape \
   blender \
@@ -165,8 +151,7 @@ sudo dnf install \
   google-roboto-slab-fonts \
   comic-neue-fonts \
   comic-neue-angular-fonts \
-  --setopt=group_package_types="mandatory,default,optional"
-  --exclude=ardour6
+  --setopt=group_package_types="mandatory,default,optional" 
 
 echo "Run dnf Autoremove"
 sudo dnf autoremove
