@@ -56,7 +56,6 @@ sudo dnf install \
   gnupg \
   sshfs \
   gvfs-mtp \
-  simple-mtpfs \
   gvfs-fuse \
   android-tools \
   rpi-imager \
@@ -101,7 +100,6 @@ sudo dnf install \
   gnome-shell-extension-freon \
   gnome-shell-extension-gpaste \
   gnome-shell-extension-netspeed \
-  gnome-shell-extension-sound-output-device-chooser \
   gnome-shell-extension-system-monitor-applet \
   gnome-shell-extension-workspace-indicator \
   hexchat \
