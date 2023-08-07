@@ -89,6 +89,7 @@ sudo dnf install \
   composer \
   vala \
   vala-doc \
+  WoeUSB \
   "@Security Lab" \
   gnome-tweaks \
   nautilus-extensions \
