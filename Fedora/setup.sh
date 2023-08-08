@@ -93,6 +93,7 @@ sudo dnf install \
   gnome-tweaks \
   nautilus-extensions \
   nautilus-gsconnect \
+  gnome-extensions-app \
   gnome-shell-extension-gsconnect \
   gnome-shell-extension-dash-to-dock \
   gnome-shell-extension-auto-move-windows \
