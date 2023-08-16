@@ -74,6 +74,9 @@ sudo dnf install \
   "@C Development Tools and Libraries" \
   "@Development Tools" \
   pipx \
+  pgcli \
+  poetry \
+  yt-dlp \
   python3-mypy \
   python3-mypy_extensions \
   rust \
