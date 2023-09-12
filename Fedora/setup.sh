@@ -120,6 +120,8 @@ sudo dnf install \
   meld \
   qpdf \
   gthumb \
+  libavif-tools \
+  avif-pixbuf-loader \
   ImageMagick \
   stellarium \
   gimp \
