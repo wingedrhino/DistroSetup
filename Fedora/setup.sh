@@ -40,6 +40,7 @@ sudo dnf install \
   levien-inconsolata-fonts \
   parallel \
   smartmontools \
+  ddrescue \
   rclone \
   s3cmd \
   iperf3 \
