@@ -1,0 +1,2 @@
+sudo mdadm --assemble --scan
+
