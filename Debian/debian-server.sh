@@ -16,6 +16,8 @@ sudo apt install \
   neovim \
   cryptsetup \
   smartmontools \
+  htop \
+  iotop \
   mdadm \
   s3cmd \
   s4cmd

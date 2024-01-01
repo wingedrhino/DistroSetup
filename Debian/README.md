@@ -15,3 +15,10 @@ Untested but hopefully working Debians are:
 4. Ubuntu 24.04
 5. Debian Sid (Unstable)
 
+## KXStudio Setup
+
+See [here](https://kx.studio/Repositories) for how to setup KX Repos. Install
+all [meta-packages](https://kx.studio/Documentation:Repository:Meta-Packages)
+that are available (`kxstudio-meta-all` ) plus `ardour` if you run a GUI; and
+if you run headless, perhaps you only need `kxstudio-meta-audio-plugins`.
+

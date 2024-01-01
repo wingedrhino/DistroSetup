@@ -5,4 +5,7 @@ sudo apt install \
   gnome-shell-extension-arc-menu \
   gnome-shell-extension-gsconnect \
   gnome-shell-extension-freon
+  nautilus \
+  nautilus-image-converter \
+  nautilus-kdeconnect
 
