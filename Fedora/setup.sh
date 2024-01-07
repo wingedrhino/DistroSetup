@@ -108,6 +108,11 @@ sudo dnf install \
   gnome-shell-extension-system-monitor-applet \
   gnome-shell-extension-workspace-indicator \
   vlc \
+  vlc-plugin-ffmpeg \
+  vlc-plugin-gnome \
+  vlc-plugin-pipewire \
+  vlc-plugins-video-out \
+  vlc-plugin-fluidsynth \
   hexchat \
   deluge \
   gparted \
