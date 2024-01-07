@@ -6,10 +6,8 @@ sudo flatpak install flathub \
   org.signal.Signal \
   com.redis.RedisInsight \
   io.dbeaver.DBeaverCommunity \
-  org.videolan.VLC \
   org.bino3d.bino \
   fr.handbrake.ghb\
-  com.obsproject.Studio \
   org.kde.kdenlive \
   org.shotcut.Shotcut
 echo "Finished Fedora Workstation Flatpak Setup"

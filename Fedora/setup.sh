@@ -107,6 +107,7 @@ sudo dnf install \
   gnome-shell-extension-netspeed \
   gnome-shell-extension-system-monitor-applet \
   gnome-shell-extension-workspace-indicator \
+  vlc \
   hexchat \
   deluge \
   gparted \
@@ -131,7 +132,7 @@ sudo dnf install \
   krita \
   darktable \
   "@Audio Production" \
-  ardour7 \
+  ardour8 \
   helvum \
   easyeffects \
   lv2-setBfree-plugins \
@@ -149,6 +150,7 @@ sudo dnf install \
   lv2-amsynth-plugin \
   Carla \
   hydrogen \
+  obs-studio \
   libreoffice \
   calibre \
   "@Authoring and Publishing" \
