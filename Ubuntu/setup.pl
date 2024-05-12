@@ -77,7 +77,7 @@ if(exists($cli_params{'headless'})) {
 
 # Begin Setup
 
-print "Begin Ubuntu 21.10 Setup Process!\n";
+print "Begin Ubuntu 24.04 Setup Process!\n";
 
 my @installer_helpers = (
   'curl',
@@ -130,7 +130,7 @@ apt_add_key(
 );
 apt_add_repo(
   'brave',
-  'deb [signed-by=/etc/apt/keyrings/brave.gpg] https://brave-browser-apt-release.s3.brave.com stable main',
+  'deb [arch=amd64 signed-by=/etc/apt/keyrings/brave.gpg] https://brave-browser-apt-release.s3.brave.com stable main',
 );
 
 print "Enable VSCode Repo\n";
@@ -150,7 +150,7 @@ apt_add_key(
 );
 apt_add_repo(
   'pgadmin4',
-  'deb [signed-by=/etc/apt/keyrings/pgadmin.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/mantic pgadmin4 main',
+  'deb [arch=amd64 signed-by=/etc/apt/keyrings/pgadmin.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/mantic pgadmin4 main',
 );
 
 if ($install_gui) {
