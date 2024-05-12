@@ -1,15 +1,19 @@
 # Ubuntu Configuration Automation
 
-This repository contains scripts to automate the setup of Ubuntu 21.10 according
-to my specific preferences.
+This repository contains scripts to automate the setup of Ubuntu to my own
+preferences. I prefer Gnome due to my familiarity with its keyboard shortcuts.
 
-I use Ubuntu 21.04 on my VPS boxes, and Ubuntu 21.10 with Ubuntu Studio tools
-on my workstations.
+I'd use other Linux distros (Arch or Fedora) for access to bleeding-edge
+packages; but the idea behind an automated Ubuntu setup script is to setup a
+stable long term release system that I can recommend to others, who might not
+necessarily be familiar with Linux.
+
+The script is written in Perl, mostly because I was super inspired by the now
+former host of FLOSS Weekly, Randal Schwartz. I'd NEVER use Perl again; but
+keeping this script updated lets me continuously brush up on the tiny bit of
+Perl I do know.
 
 ## Server Setup
-
-I'm assuming you're on a random cloud provider (or a virtual machine) running
-**Ubuntu Server 21.10**.
 
 First, create a non-root user if you are currently root and give this user
 administrative privileges. DigitalOcean for example by default makes you login
@@ -33,7 +37,7 @@ mkdir -p $HOME/ext/workspace
 cd $HOME/ext/workspace
 git clone https://github.com/wingedrhino/DistroSetup
 cd DistroSetup/setup-helpers/Ubuntu
-sudo ./setup.pl server
+sudo ./setup.pl headless
 ```
 
 After this, move to the DistroAgnostic directory
@@ -47,16 +51,13 @@ And finish the common post-install tasks there!
 
 ## Workstation Setup
 
-I'm assuming you're on a laptop and you installed **Ubuntu 21.10**. I also
-assume you have `sudo` privileges because this is the primary user.
-
 ```bash
 mkdir -p $HOME/ext/workspace
 cd $HOME/ext/workspace
 apt install git -y
 git clone https://github.com/wingedrhino/DistroSetup
 cd DistroSetup/setup-helpers/Ubuntu
-sudo ./setup.pl all
+sudo ./setup.pl
 sudo ./install-snaps.sh
 ```
 
@@ -71,6 +72,12 @@ cat README.md
 ```
 
 And finish the common post-install tasks there!
+
+## Third Party Software
+
+There's helpers to install third party software here. This includes copying the
+GPG keys to `/etc/apt/keyrings/` and then creating a file in
+`/etc/apt/sources.list.d/`.
 
 ## Verifying Ubuntu ISOs
 
@@ -104,8 +111,4 @@ uid                 Ubuntu CD Image Automatic Signing Key (2012) cdimage@ubuntu.
 ```bash
 gpg --keyid-format long --verify SHA256SUMS.gpg SHA256SUMS
 ```
-
-## TODO: Replace apt-key
-
-https://www.linuxuprising.com/2021/01/apt-key-is-deprecated-how-to-add.html
 

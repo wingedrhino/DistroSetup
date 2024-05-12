@@ -1,10 +1,6 @@
 *.log
-go1.*.linux-amd64.tar.gz
-minikube
-docker-compose
-Anaconda3-*-Linux-x86_64.sh
-slack-*.x86_64.rpm
-flutter_linux_v*-stable.tar.xz
-mongodb-compass-isolated*.deb
-discord*.deb
-flutter_linux*.tar.xz
+*.gz
+*.xz
+*.tar
+*.deb
+
