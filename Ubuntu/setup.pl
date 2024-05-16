@@ -222,6 +222,7 @@ my @list_cli = (
   'docker-compose',
   'nodejs',
   'python3',
+  'pipx',
   'python3-pip',
   'python3-venv',
   'ipython3',
