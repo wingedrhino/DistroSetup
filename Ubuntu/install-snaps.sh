@@ -1,4 +1,6 @@
 #!/bin/sh
+echo "Snap: BitWarden"
+sudo snap install bitwarden
 echo "Snap: doctl"
 sudo snap install doctl
 echo "Snap: Chromium"
