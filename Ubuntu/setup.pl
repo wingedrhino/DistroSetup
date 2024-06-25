@@ -245,6 +245,8 @@ my @list_cli = (
 
 
 my @list_gui = (
+  'fonts-inconsolata',
+  'fonts-roboto',
   'fonts-comic-neue',
   'gpaste-2',
   'gnome-shell-extensions',
