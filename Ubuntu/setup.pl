@@ -219,7 +219,6 @@ my @list_cli = (
   'certbot',
   'python3-certbot-nginx',
   'docker.io',
-  'docker-compose',
   'nodejs',
   'python3',
   'pipx',
