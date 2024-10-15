@@ -37,7 +37,7 @@ PATH="/opt/google-cloud-sdk/bin:$PATH"
 PATH="$HOME/.emacs.d/bin:$PATH"
 
 # Mobile Dev Setup
-ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+ANDROID_SDK_ROOT="$HOME/.android/sdk"
 PATH="/opt/depot_tools:$PATH"
 
 # Rust Setup
