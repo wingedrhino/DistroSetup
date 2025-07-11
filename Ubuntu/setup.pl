@@ -155,8 +155,8 @@ apt_add_repo(
 
 if ($install_gui) {
   apt_install_deb(
-    'mongodb-compass_1.43.0_amd64.deb',
-    'https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.43.0_amd64.deb',
+    'mongodb-compass_1.46.5_amd64.deb',
+    'https://downloads.mongodb.com/compass/mongodb-compass-isolated-1.46.5_amd64.deb',
   );
 }
 
@@ -226,7 +226,6 @@ my @list_cli = (
   'python3-venv',
   'ipython3',
   'dart',
-  'golang-1.22-go',
   'exfat-fuse',
   'exfatprogs',
   'adb',
