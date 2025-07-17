@@ -77,7 +77,7 @@ if(exists($cli_params{'headless'})) {
 
 # Begin Setup
 
-print "Begin Ubuntu 24.04 Setup Process!\n";
+print "Begin Ubuntu 25.04 Setup Process!\n";
 
 my @installer_helpers = (
   'curl',
@@ -150,7 +150,7 @@ apt_add_key(
 );
 apt_add_repo(
   'pgadmin4',
-  'deb [arch=amd64 signed-by=/etc/apt/keyrings/pgadmin.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/mantic pgadmin4 main',
+  'deb [arch=amd64 signed-by=/etc/apt/keyrings/pgadmin.gpg] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/plucky pgadmin4 main',
 );
 
 if ($install_gui) {
@@ -266,7 +266,7 @@ my @list_gui = (
   'deluge',
   'neovim-qt',
   'tilix',
-  'ubuntustudio-installer',
+  'pgadmin4',
   'v4l-utils',
   'v4l2loopback-dkms',
   'v4l2loopback-utils',
