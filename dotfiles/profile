@@ -7,7 +7,7 @@ export EDITOR=vim
 DOCUMENTS_DIR="$HOME/Documents"
 LOCAL_BIN="$HOME/.local/bin"
 HOME_BIN="$HOME/bin"
-WORKSPACE_DIR="$DOCUMENTS_DIR/workspace" # All software development happens here!
+WORKSPACE_DIR="$HOME/git" # All software development happens here!
 DOWNLOAD_DIR="$HOME/Downloads" # Temporary directory during downloads
 TMP_DIR="$HOME/tmp" # Working directory periodically cleared
 APPDATA_DIR="$DOCUMENTS_DIR/appdata" # Large, application-specific data stored here
@@ -60,13 +60,6 @@ export MANPATH
 #
 
 alias dld='wget --local-encoding=UTF-8 -c --trust-server-names $@'
-alias d=docker
-alias dc=docker-compose
-alias b='buffalo'
-alias g='git'
-alias anaconda3='eval "$(~/.local/apps/anaconda3/bin/conda shell.zsh hook)"'
-alias vpn='protonvpn-cli c --cc=NL -p udp'
-alias vpnd='protonvpn-cli disconnect'
 
 #
 # If a .profile.local exists, source it

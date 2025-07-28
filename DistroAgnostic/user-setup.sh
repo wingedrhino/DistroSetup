@@ -15,7 +15,7 @@ echo "Install ~/.gitconfig"
 cp ../dotfiles/gitconfig ~/.gitconfig
 
 echo "Create essential directories"
-mkdir -p $HOME/Documents/workspace $HOME/Documents/vault $HOME/Documents/appdata $HOME/bin $HOME/go
+mkdir -p $HOME/bin $HOME/git
 
 echo "If you want to change shell from $SHELL to zsh, run 'chsh -s /usr/bin/zsh'"
 
@@ -30,8 +30,5 @@ sudo gpasswd -a $USER realtime
 sudo gpasswd -a $USER docker
 sudo gpasswd -a $USER uucp
 sudo gpasswd -a $USER adbusers
-sudo gpasswd -a $USER bumblebee
 
-echo "Enable bumblebee if installed, for nvidia power management"
-sudo systemctl enable bumblebee
 
