@@ -45,7 +45,10 @@ PATH="$HOME/.cargo/bin:$PATH"
 
 # Golang Setup
 PATH="$HOME/go/bin:$PATH"
-PATH="$PATH:/usr/local/go/bin"
+PATH="/usr/local/go/bin:$PATH"
+
+#PyCharm Setup
+PATH="$HOME/software/pycharm/bin:$PATH"
 
 # Add local bin to path
 PATH="$LOCAL_BIN:$PATH"
